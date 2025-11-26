@@ -9,7 +9,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>{children}</body>
-      <PrismicPreview repositoryName={repositoryName} />
+      <PrismicPreview
+        repositoryName={repositoryName}
+        writeToken={process.env.PRISMIC_WRITE_TOKEN}
+      />
     </html>
   );
 }

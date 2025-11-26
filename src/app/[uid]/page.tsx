@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { asText, filter } from "@prismicio/client";
+import { asText } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
@@ -40,10 +40,9 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const client = createClient();
 
-  // Get all pages from Prismic, except the homepage.
-  const pages = await client.getAllByType("page", {
-    filters: [filter.not("my.page.uid", "home")],
-  });
+  // Get all pages from Prismic.
+  // Note: "home" is a different custom type, so no need to filter it out.
+  const pages = await client.getAllByType("page");
 
   return pages.map((page) => ({ uid: page.uid }));
 }

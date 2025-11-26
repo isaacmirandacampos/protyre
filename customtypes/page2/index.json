@@ -1,0 +1,10 @@
+{
+  "format": "custom",
+  "id": "page2",
+  "json": {
+    "Main": {}
+  },
+  "label": "page2",
+  "repeatable": false,
+  "status": true
+}

@@ -3,6 +3,11 @@ import { repositoryName } from "@/prismicio";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
+import { Lato } from 'next/font/google'
+
+const lato = Lato({ weight: '400', subsets: ['latin'] })
+
+
 
 export default function RootLayout({
   children,
@@ -11,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="font-sans antialiased text-zinc-900 bg-black min-h-screen flex flex-col">
+      <body className={"antialiased font-[] text-zinc-900 bg-black min-h-screen flex flex-col ".concat(lato.className)}>
         <Header />
         <main className="flex-grow bg-white">
           {children}

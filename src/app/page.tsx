@@ -1,185 +1,493 @@
 import { type Metadata } from "next";
-import Link from 'next/link';
-import { CheckCircle, ArrowRight } from 'lucide-react';
-import { MOCK_PRODUCTS } from '@/data/products';
-import { ProductCard } from '@/components/ProductCard';
-
-export default function Home() {
-  return (<div className="flex flex-col">
-    {/* Hero Section */}
-    <section className="relative h-[600px] flex items-center">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1920"
-          alt="Motorcycle on road"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-2xl">
-          <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-4">
-            Performance que <br />
-            <span className="text-green-500">Domina a Pista</span>
-          </h2>
-          <p className="text-zinc-300 text-lg mb-8 max-w-lg">
-            Pneus de alta performance desenvolvidos com tecnologia de ponta para garantir aderência e segurança em cada quilômetro.
-          </p>
-          <div className="flex gap-4">
-            <Link href="/produtos" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded font-bold transition-colors shadow-lg shadow-green-900/50">
-              Ver Produtos
-            </Link>
-            <Link href="/#sobre" className="bg-white hover:bg-gray-200 text-black px-8 py-3 rounded font-bold transition-colors">
-              Saiba Mais
-            </Link>
-          </div>
-
-          <div className="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
-            <div>
-              <span className="block text-3xl font-bold text-green-500">30+</span>
-              <span className="text-xs text-zinc-400 uppercase tracking-wider">Anos de Experiência</span>
-            </div>
-            <div>
-              <span className="block text-3xl font-bold text-green-500">2M+</span>
-              <span className="text-xs text-zinc-400 uppercase tracking-wider">Pneus Vendidos</span>
-            </div>
-            <div>
-              <span className="block text-3xl font-bold text-green-500">98%</span>
-              <span className="text-xs text-zinc-400 uppercase tracking-wider">Satisfação</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Products Preview */}
-    <section className="bg-zinc-100 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-black mb-2">Nossos <span className="text-green-600">Produtos</span></h2>
-          <p className="text-zinc-600">Conheça nossa linha completa para todos os tipos de terrenos</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {MOCK_PRODUCTS.map(product => (
-            <Link key={product.id} href={`/produtos/${product.id}`}>
-              <ProductCard product={product} />
-            </Link>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link
-            href="/produtos"
-            className="bg-black text-white px-8 py-3 rounded font-bold hover:bg-zinc-800 transition-colors inline-flex items-center gap-2"
-          >
-            Todos os Produtos <ArrowRight size={18} />
-          </Link>
-        </div>
-      </div>
-    </section>
-
-    {/* About Section */}
-    <section id="sobre" className="bg-black py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <div className="absolute -inset-4 bg-green-600/20 rounded-lg transform -rotate-3"></div>
-            <img
-              src="https://images.unsplash.com/photo-1562519818-b223014a93cf?auto=format&fit=crop&q=80&w=800"
-              alt="Protyre Headquarters"
-              className="relative rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-            />
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-6">Sobre <span className="text-green-500">Nós</span></h2>
-            <p className="text-zinc-400 mb-6 leading-relaxed">
-              Somos apaixonados por motociclismo e dedicados a entregar a melhor experiência sobre duas rodas.
-              Nossa estrutura conta com tecnologia de ponta e uma equipe especializada para garantir a qualidade de cada pneu que sai de nossa fábrica.
-            </p>
-            <ul className="space-y-4">
-              <li className="flex items-center text-zinc-300">
-                <CheckCircle className="text-green-500 mr-3" size={20} />
-                Tecnologia de ponta
-              </li>
-              <li className="flex items-center text-zinc-300">
-                <CheckCircle className="text-green-500 mr-3" size={20} />
-                Matéria prima de alta qualidade
-              </li>
-              <li className="flex items-center text-zinc-300">
-                <CheckCircle className="text-green-500 mr-3" size={20} />
-                Qualidade e durabilidade
-              </li>
-              <li className="flex items-center text-zinc-300">
-                <CheckCircle className="text-green-500 mr-3" size={20} />
-                Compromisso com o cliente
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Distributor Form Section */}
-    <section id="distribuidor" className="bg-green-900/20 py-20 border-t border-zinc-800">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">Seja um <span className="text-green-500">Distribuidor</span></h2>
-          <p className="text-zinc-400">Junte-se à rede de distribuição da marca que mais cresce no Brasil. Ofereça aos seus clientes o melhor custo-benefício.</p>
-        </div>
-
-        <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="md:col-span-2">
-              <h3 className="text-white font-semibold mb-4 border-b border-white/10 pb-2">Dados da Empresa</h3>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 uppercase font-bold">Nome / Razão Social</label>
-              <input type="text" className="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-green-500 focus:outline-none" placeholder="Sua empresa" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 uppercase font-bold">CNPJ</label>
-              <input type="text" className="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-green-500 focus:outline-none" placeholder="00.000.000/0000-00" />
-            </div>
-
-            <div className="md:col-span-2">
-              <h3 className="text-white font-semibold mt-4 mb-4 border-b border-white/10 pb-2">Dados de Contato</h3>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 uppercase font-bold">Nome do Contato</label>
-              <input type="text" className="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-green-500 focus:outline-none" placeholder="Seu nome" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 uppercase font-bold">E-mail</label>
-              <input type="email" className="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-green-500 focus:outline-none" placeholder="seu@email.com" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 uppercase font-bold">Telefone / WhatsApp</label>
-              <input type="text" className="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-green-500 focus:outline-none" placeholder="(00) 00000-0000" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 uppercase font-bold">Cidade / Estado</label>
-              <input type="text" className="w-full bg-black/50 border border-zinc-700 rounded p-3 text-white focus:border-green-500 focus:outline-none" placeholder="São Paulo - SP" />
-            </div>
-
-            <div className="md:col-span-2 mt-4">
-              <button type="button" className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded transition-colors uppercase tracking-wider">
-                Enviar solicitação
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </div>);
-}
+import Link from "next/link";
+import {
+  CheckCircle,
+  ArrowRight,
+  DownloadIcon,
+  Award,
+  Users,
+  TrendingUp,
+  ChevronDown,
+} from "lucide-react";
+import { MOCK_PRODUCTS } from "@/data/products";
+import { ProductCard } from "@/components/ProductCard";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Protyre - Pneus de Alta Performance",
-    description: "Pneus de alta performance desenvolvidos com tecnologia de ponta para garantir aderência e segurança em cada quilômetro.",
+    description:
+      "Pneus de alta performance desenvolvidos com tecnologia de ponta para garantir aderência e segurança em cada quilômetro.",
   };
 }
+
+export default function Home() {
+  return (
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="relative h-[600px] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1920"
+            alt="Motorcycle on road"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-2xl">
+            <h2 className="text-5xl md:text-6xl text-white leading-tight mb-4">
+              Performance que <br />
+              <span className="text-green-500">Domina a Pista</span>
+            </h2>
+            <p className="text-zinc-300 text-lg mb-8 max-w-lg">
+              Pneus de alta performance desenvolvidos com tecnologia de ponta
+              para garantir aderência e segurança em cada quilômetro.
+            </p>
+            <div className="flex gap-4">
+              <Link
+                href="/produtos"
+                className="bg-green-600 hover:bg-green-700 text-white items-center text-sm gap-2 flex px-4 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
+              >
+                Explorar produtos <ArrowRight className="text-xs h-4" />
+              </Link>
+              <Link
+                href="/#sobre"
+                className="bg-white hover:bg-gray-200 items-center flex gap-2 text-sm text-black px-4 py-3 rounded-md transition-colors"
+              >
+                <DownloadIcon className="text-xs h-4" />
+                Baixar catálogo
+              </Link>
+            </div>
+
+            <div className="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+              <div>
+                <span className="block text-3xl font-bold text-green-500">
+                  30+
+                </span>
+                <span className="text-xs text-zinc-400 uppercase tracking-wider">
+                  Anos de Experiência
+                </span>
+              </div>
+              <div>
+                <span className="block text-3xl font-bold text-green-500">
+                  2M+
+                </span>
+                <span className="text-xs text-zinc-400 uppercase tracking-wider">
+                  Pneus Vendidos
+                </span>
+              </div>
+              <div>
+                <span className="block text-3xl font-bold text-green-500">
+                  98%
+                </span>
+                <span className="text-xs text-zinc-400 uppercase tracking-wider">
+                  Satisfação
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Preview */}
+      <section className="bg-zinc-100 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-black mb-2">
+              Nossos <span className="text-green-600">Produtos</span>
+            </h2>
+            <p className="text-zinc-600">
+              Conheça nossa linha completa para todos os tipos de terrenos
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {MOCK_PRODUCTS.map((product) => (
+              <Link key={product.id} href={`/produtos/${product.id}`}>
+                <ProductCard product={product} />
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/produtos"
+              className="bg-black text-white px-8 py-3 rounded font-bold hover:bg-zinc-800 transition-colors inline-flex items-center gap-2"
+            >
+              Todos os Produtos <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="sobre" className="bg-black py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-green-600/20 rounded-lg transform -rotate-3"></div>
+              <img
+                src="https://images.unsplash.com/photo-1562519818-b223014a93cf?auto=format&fit=crop&q=80&w=800"
+                alt="Protyre Headquarters"
+                className="relative rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Sobre <span className="text-green-500">Nós</span>
+              </h2>
+              <p className="text-zinc-400 mb-6 leading-relaxed">
+                Somos apaixonados por motociclismo e dedicados a entregar a
+                melhor experiência sobre duas rodas. Nossa estrutura conta com
+                tecnologia de ponta e uma equipe especializada para garantir a
+                qualidade de cada pneu que sai de nossa fábrica.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-center text-zinc-300">
+                  <CheckCircle className="text-green-500 mr-3" size={20} />
+                  Tecnologia de ponta
+                </li>
+                <li className="flex items-center text-zinc-300">
+                  <CheckCircle className="text-green-500 mr-3" size={20} />
+                  Matéria prima de alta qualidade
+                </li>
+                <li className="flex items-center text-zinc-300">
+                  <CheckCircle className="text-green-500 mr-3" size={20} />
+                  Qualidade e durabilidade
+                </li>
+                <li className="flex items-center text-zinc-300">
+                  <CheckCircle className="text-green-500 mr-3" size={20} />
+                  Compromisso com o cliente
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <DistributorSection />
+    </div>
+  );
+}
+
+const DistributorSection = () => {
+  return (
+    <section id="distribuidor" className="relative bg-black">
+      <div className="bg-gradient pt-16 pb-40">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#00AA0E] mb-6">
+            Seja um Distribuidor
+          </h2>
+          <p className="max-w-3xl mx-auto mb-12 text-[#FFFFFFB2]">
+            Junte-se à rede de distribuidores da marca que mais cresce no
+            Brasil. Oferecemos suporte completo, margem competitiva e produtos
+            de alta qualidade que seus clientes vão adorar.
+          </p>
+
+          {/* Cards de benefícios */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-[#FFFFFF0D] backdrop-blur-sm rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-3">
+                <Award className="w-8 h-8 text-[#00AA0E]" />
+              </div>
+              <h3 className="text-white font-semibold mb-2">
+                Produtos de Qualidade
+              </h3>
+              <p className="text-[#FFFFFF99] text-sm">
+                Linha completa testada e aprovada com certificação
+                internacional.
+              </p>
+            </div>
+
+            <div className="bg-[#FFFFFF0D] backdrop-blur-sm rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-3">
+                <Users className="w-8 h-8 text-[#00AA0E]" />
+              </div>
+              <h3 className="text-white font-semibold mb-2">Suporte Técnico</h3>
+              <p className="text-[#FFFFFF99] text-sm">
+                Treinamento especializado e assistência técnica completa.
+              </p>
+            </div>
+
+            <div className="bg-[#FFFFFF0D] backdrop-blur-sm rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-3">
+                <TrendingUp className="w-8 h-8 text-[#00AA0E]" />
+              </div>
+              <h3 className="text-white font-semibold mb-2">
+                Alto Potencial de Lucro
+              </h3>
+              <p className="text-[#FFFFFF99] text-sm">
+                Margem competitiva e produtos de alta rotatividade no mercado.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-black pb-20">
+        <div className="bg-gradient pb-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20">
+            <div className="bg-[#E7EEE5] rounded-2xl shadow-xl p-8 md:p-10">
+              <form className="space-y-8">
+                {/* Dados da Empresa */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                    Dados da Empresa
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Razão Social<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Razão social da empresa"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Nome Fantasia<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Nome fantasia da empresa"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Inscrição Estadual (IE)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder='000.000.000.000 (ou "Isento")'
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        CNPJ<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="00.000.000/0000-00"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Ramo de Atividade<span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select className="w-full bg-white border-0 rounded-lg p-3 text-gray-400 appearance-none focus:ring-2 focus:ring-green-500 focus:outline-none cursor-pointer">
+                          <option value="">Selecione o ramo de atuação</option>
+                          <option value="varejo">Varejo</option>
+                          <option value="atacado">Atacado</option>
+                          <option value="oficina">Oficina Mecânica</option>
+                          <option value="revenda">Revenda de Pneus</option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Data de Fundação<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="dd/mm/aaaa"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dados de Contato */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                    Dados de contato
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Telefone com DDD<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="(00) 00000-0000"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        E-mail<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="Digite seu e-mail"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Confirmação de e-mail
+                        <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="Confirme seu e-mail"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Site
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Cole aqui o link"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Rede Social
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Cole aqui o link"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Endereço */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">
+                    Endereço
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        CEP<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="00000-000"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Estado<span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select className="w-full bg-white border-0 rounded-lg p-3 text-gray-400 appearance-none focus:ring-2 focus:ring-green-500 focus:outline-none cursor-pointer">
+                          <option value="">Selecione o estado</option>
+                          <option value="SP">São Paulo</option>
+                          <option value="RJ">Rio de Janeiro</option>
+                          <option value="MG">Minas Gerais</option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Cidade<span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select className="w-full bg-white border-0 rounded-lg p-3 text-gray-400 appearance-none focus:ring-2 focus:ring-green-500 focus:outline-none cursor-pointer">
+                          <option value="">Selecione a cidade</option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Bairro<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Informe o bairro"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Logradouro<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Rua / Avenida"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Nº<span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="000"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="text-sm text-gray-700 font-medium">
+                        Complemento
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Opcional"
+                        className="w-full bg-white border-0 rounded-lg p-3 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Checkbox e Botão */}
+                <div className="space-y-6">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer"
+                    />
+                    <span className="text-sm text-gray-600">
+                      Li e aceito as{" "}
+                      <a
+                        href="#"
+                        className="text-green-600 underline hover:text-green-700"
+                      >
+                        Políticas de Privacidade
+                      </a>{" "}
+                      e{" "}
+                      <a
+                        href="#"
+                        className="text-green-600 underline hover:text-green-700"
+                      >
+                        Políticas de Cookies
+                      </a>
+                      .
+                    </span>
+                  </label>
+
+                  <div className="flex justify-center">
+                    <button
+                      type="submit"
+                      className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors inline-flex items-center gap-2"
+                    >
+                      Enviar cadastro para ser um distribuidor
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+  --color-mint-500: oklch(0.72 0.11 178);
+}
+
+@layer utilities {
+  .bg-gradient {
+    background: linear-gradient(to right, rgba(0, 201, 80, 0.3), #000000);
+  }
+}

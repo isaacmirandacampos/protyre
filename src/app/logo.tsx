@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function Logo(props: any) {
+export function Logo(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={111}

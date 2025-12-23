@@ -37,7 +37,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/80"></div>
         </div>
 
-        <div className="relative z-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-12 w-full">
+        <div className="relative z-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-12 xl:mt-20 w-full">
           <div className="max-w-2xl">
             <h2 className="text-5xl md:text-6xl text-white leading-tight mb-4">
               Performance que <br />
@@ -65,32 +65,36 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-screen z-100 m-12 border-t border-zinc-700" />
-        <div className="mt-12 z-1 flex justify-center gap-8 pt-8">
-          <div>
+        <div className="relative w-screen z-1 my-4 lg:m-12 xl:mt-20 border-t border-zinc-700" />
+        <div className="relative mt-1 z-1000 flex justify-center lg:gap-20 xl:gap-28 pt-8">
+          <div className="flex justify-center items-center flex-col">
             <span className="block text-3xl font-bold text-green-500">
               30+
             </span>
-            <span className="text-xs text-zinc-400 uppercase tracking-wider">
+            <span className="text-sm text-zinc-400 capitalize tracking-wider">
               Anos de Experiência
             </span>
           </div>
-          <div>
+          <div className="flex justify-center items-center gap-2 flex-col">
             <span className="block text-3xl font-bold text-green-500">
               2M+
             </span>
-            <span className="text-xs text-zinc-400 uppercase tracking-wider">
+            <span className="text-sm text-zinc-400 capitalize tracking-wider">
               Pneus Vendidos
             </span>
           </div>
-          <div>
+          <div className="flex justify-center items-center gap-2 flex-col">
             <span className="block text-3xl font-bold text-green-500">
               98%
             </span>
-            <span className="text-xs text-zinc-400 uppercase tracking-wider">
+            <span className="text-sm text-zinc-400 capitalize tracking-wider">
               Satisfação
             </span>
           </div>
+        </div>
+        <div className="z-1 relative lg:mt-12 flex justify-center flex-col items-center">
+          <span className="text-white/40 gap-8 uppercase">Role para baixo</span>
+          <Image height={40} width={24} src="/scroll-to-below.svg" alt="Icone avisando indicando que tem mais conteúdo visível ao rolar a página" />
         </div>
       </section >
 

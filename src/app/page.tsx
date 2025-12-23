@@ -57,13 +57,13 @@ export default function Home() {
             <div className="flex flex-col xl:flex-row gap-4">
               <Link
                 href="/produtos"
-                className="bg-green-600 hover:bg-green-700 text-white items-center xl:w-full w-fit text-sm gap-2 flex px-4 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
+                className="bg-green-600 hover:bg-green-700 text-white items-center w-fit xl:w-42 text-sm gap-2 flex px-2 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
               >
                 Explorar produtos <ArrowRight className="text-xs h-4" />
               </Link>
               <Link
                 href="/#sobre"
-                className="bg-white hover:bg-gray-200 items-center flex gap-2 text-sm text-black w-fit xl:w-full px-4 py-3 rounded-md transition-colors"
+                className="bg-white hover:bg-gray-200 items-center flex gap-2 text-sm text-black w-fit xl:w-42 px-2 py-3 rounded-md transition-colors"
               >
                 <DownloadIcon className="text-xs h-4" />
                 Baixar catálogo
@@ -106,7 +106,7 @@ export default function Home() {
       </section >
 
       {/* Products Preview */}
-      < section className="bg-zinc-100 py-20" >
+      < section className="bg-[#E7EEE5] py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-green-600 mb-2">
@@ -128,7 +128,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/produtos"
-              className="bg-[#00AA0E] text-black px-4 capitalize py-3 rounded font-bold hover:bg-zinc-800 transition-colors inline-flex items-center gap-4"
+              className="bg-[#00AA0E] text-black px-4 py-3 rounded-md hover:bg-zinc-800 transition-colors inline-flex items-center gap-4"
             >
               Ver Todos os Produtos <ArrowRight size={18} />
             </Link>

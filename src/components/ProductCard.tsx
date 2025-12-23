@@ -8,8 +8,8 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="group bg-zinc-800 rounded-lg overflow-hidden flex flex-col hover:shadow-xl hover:shadow-green-900/20 transition-all duration-300 border border-zinc-700/50 cursor-pointer">
-      <div className="relative h-64 bg-zinc-900 p-6 flex items-center justify-center overflow-hidden">
+    <div className="group bg-zinc-800 rounded-lg overflow-hidden flex flex-col hover:shadow-xl hover:shadow-green-900/20 transition-all duration-300 cursor-pointer">
+      <div className="relative h-64 bg-white p-6 flex items-center justify-center overflow-hidden">
         <img
           src={product.image}
           alt={product.name}

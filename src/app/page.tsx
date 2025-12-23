@@ -473,7 +473,7 @@ const Sobre = () => {
             height={527}
             src="/sobre-nos.png"
             alt="Protyre Headquarters"
-            className="relative w-[70vw] z-1 shadow-2xl shadow-black/50"
+            className="relative max-w-[650px] w-[70vw] z-1 shadow-2xl shadow-black/50"
           />
         </div>
         <div>

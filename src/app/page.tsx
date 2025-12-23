@@ -32,7 +32,7 @@ export default function Home() {
             height={944}
             src="/hero.png"
             alt="Motociclista em alta velocidade na rua"
-            className="w-screen h-full object-contain hidden xl:block"
+            className="w-screen absolute h-full object-contain hidden xl:block"
           />
           <Image
             width={482}
@@ -41,29 +41,29 @@ export default function Home() {
             alt="Carro em alta velocidade na rua"
             className="w-screen h-full object-contain opacity-40 block xl:hidden"
           />
-          <div className="absolute bg-gradient-to-b from-black via-black/80 to-black  inset-0 xl:bg-none xl:bg-black/80"></div>
+          <div className="absolute bg-gradient-to-b from-black via-black/80 to-black  inset-0 xl:bg-gradient-to-b xl:from-black/95 xl:via-black/60 xl:to-black/60"></div>
         </div>
 
-        <div className="relative z-1 max-w-7xl mx-auto px-4 mb-10 sm:px-6 xl:px-8 mt-20 w-full">
+        <div className="relative z-1 max-w-7xl mx-auto px-4 mb-10 sm:px-6 xl:px-8 mt-28 w-full">
           <div className="max-w-2xl">
-            <h2 className="text-5xl md:text-6xl text-white leading-tight mb-4">
+            <h2 className="text-5xl md:text-6xl text-white leading-tight my-8">
               Performance que <br />
               <span className="text-green-500">Domina a Pista</span>
             </h2>
-            <p className="text-zinc-300 text-lg mb-8 max-w-lg">
+            <p className="text-zinc-300 text-lg my-8 max-w-lg">
               Pneus de alta performance desenvolvidos com tecnologia de ponta
               para garantir aderência e segurança em cada quilômetro.
             </p>
             <div className="flex flex-col xl:flex-row gap-4">
               <Link
                 href="/produtos"
-                className="bg-green-600 hover:bg-green-700 text-white items-center w-fit xl:w-42 text-sm gap-2 flex px-2 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
+                className="bg-green-600 hover:bg-green-700 text-white justify-center items-center w-fit xl:w-42 text-sm gap-2 flex px-2 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
               >
                 Explorar produtos <ArrowRight className="text-xs h-4" />
               </Link>
               <Link
                 href="/#sobre"
-                className="bg-white hover:bg-gray-200 items-center flex gap-2 text-sm text-black w-fit xl:w-42 px-2 py-3 rounded-md transition-colors"
+                className="bg-white hover:bg-gray-200 items-center justify-center flex gap-2 text-sm text-black w-fit xl:w-42 px-2 py-3 rounded-md transition-colors"
               >
                 <DownloadIcon className="text-xs h-4" />
                 Baixar catálogo
@@ -75,7 +75,7 @@ export default function Home() {
         <div className="relative w-[calc(100vw-40px)] mx-auto xl:w-screen z-1 my-20 border-t border-zinc-700" />
         <div className="relative mt-1 z-1 flex xl:justify-center gap-4 items-center xl:gap-28 pt-8">
           <div className="flex justify-center xl:items-center flex-col">
-            <span className="block text-3xl font-bold text-green-500">
+            <span className="block text-3xl text-green-500">
               30+
             </span>
             <span className="text-sm text-zinc-400 capitalize tracking-wider">
@@ -83,7 +83,7 @@ export default function Home() {
             </span>
           </div>
           <div className="flex justify-center xl:items-center gap-2 flex-col">
-            <span className="block text-3xl font-bold text-green-500">
+            <span className="block text-3xl text-green-500">
               2M+
             </span>
             <span className="text-sm text-zinc-400 capitalize tracking-wider">
@@ -91,7 +91,7 @@ export default function Home() {
             </span>
           </div>
           <div className="flex justify-center xl:items-center gap-2 flex-col">
-            <span className="block text-3xl font-bold text-green-500">
+            <span className="block text-3xl text-green-500">
               98%
             </span>
             <span className="text-sm text-zinc-400 capitalize tracking-wider">

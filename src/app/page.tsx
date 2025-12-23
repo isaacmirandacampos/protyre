@@ -135,51 +135,7 @@ export default function Home() {
           </div>
         </div>
       </section >
-
-      {/* About Section */}
-      < section id="sobre" className="bg-black py-20 overflow-hidden" >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-green-600/20 rounded-lg transform -rotate-3"></div>
-              <img
-                src="https://images.unsplash.com/photo-1562519818-b223014a93cf?auto=format&fit=crop&q=80&w=800"
-                alt="Protyre Headquarters"
-                className="relative rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Sobre <span className="text-green-500">Nós</span>
-              </h2>
-              <p className="text-zinc-400 mb-6 leading-relaxed">
-                Somos apaixonados por motociclismo e dedicados a entregar a
-                melhor experiência sobre duas rodas. Nossa estrutura conta com
-                tecnologia de ponta e uma equipe especializada para garantir a
-                qualidade de cada pneu que sai de nossa fábrica.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-center text-zinc-300">
-                  <CheckCircle className="text-green-500 mr-3" size={20} />
-                  Tecnologia de ponta
-                </li>
-                <li className="flex items-center text-zinc-300">
-                  <CheckCircle className="text-green-500 mr-3" size={20} />
-                  Matéria prima de alta qualidade
-                </li>
-                <li className="flex items-center text-zinc-300">
-                  <CheckCircle className="text-green-500 mr-3" size={20} />
-                  Qualidade e durabilidade
-                </li>
-                <li className="flex items-center text-zinc-300">
-                  <CheckCircle className="text-green-500 mr-3" size={20} />
-                  Compromisso com o cliente
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section >
+      <Sobre />
       <DistributorSection />
     </div >
   );
@@ -473,14 +429,14 @@ const DistributorSection = () => {
                       Li e aceito as{" "}
                       <a
                         href="#"
-                        className="text-green-600 underline hover:text-green-700"
+                        className="underline"
                       >
                         Políticas de Privacidade
                       </a>{" "}
                       e{" "}
                       <a
                         href="#"
-                        className="text-green-600 underline hover:text-green-700"
+                        className="underline"
                       >
                         Políticas de Cookies
                       </a>
@@ -491,7 +447,7 @@ const DistributorSection = () => {
                   <div className="flex justify-center">
                     <button
                       type="submit"
-                      className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors inline-flex items-center gap-2"
+                      className="bg-green-600 hover:bg-green-700 text-black font-semibold py-4 px-8 rounded-lg transition-colors inline-flex items-center gap-2"
                     >
                       Enviar cadastro para ser um distribuidor
                       <ArrowRight className="w-5 h-5" />
@@ -506,3 +462,69 @@ const DistributorSection = () => {
     </section>
   );
 };
+
+const Sobre = () => {
+  return (<section id="sobre" className="bg-black overflow-hidden relative">
+    <div className="max-w-7xl 2xl:mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative w-[40vw] py-20">
+          <Image
+            width={737}
+            height={527}
+            src="/sobre-nos.png"
+            alt="Protyre Headquarters"
+            className="relative w-[70vw] z-1 shadow-2xl shadow-black/50"
+          />
+        </div>
+        <div>
+          <div className="absolute inset-0 -top-20 w-[100vw] -right-20 -bottom-20 z-0 pointer-events-none mix-blend-screen">
+            <Image
+              src="/sobre-nos-arrow-bg.png"
+              alt="Background Pattern"
+              fill
+              className="object-cover w-screen opacity-15 object-right-center"
+            />
+          </div>
+
+          {/* Conteúdo de Texto - Z-Index maior para ficar por cima */}
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold text-green-500 mb-6">
+              Sobre Nós
+            </h2>
+
+            <p className="text-white/70 mb-6 leading-relaxed">
+              Somos uma fabricante brasileira de pneus e câmaras para motocicletas, unindo
+              tecnologia, segurança e desempenho em cada produto. Todos os nossos pneus são
+              homologados pelo Inmetro, garantindo qualidade e confiança na estrada.
+            </p>
+
+            <p className="text-white/70 mb-8 leading-relaxed">
+              Oferecemos aderência, conforto e durabilidade para o dia a dia ou para quem busca aventura
+              sobre duas rodas. Estamos presentes em todo o Brasil, impulsionando a paixão por pilotar.
+            </p>
+
+            <ul className="space-y-4">
+              <li className="flex items-center text-zinc-300">
+                <CheckCircle className="text-green-500 mr-3 shrink-0" size={20} />
+                Certificação ISO
+              </li>
+              <li className="flex items-center text-zinc-300">
+                <CheckCircle className="text-green-500 mr-3 shrink-0" size={20} />
+                + 200 Distribuidores em todos Brasil
+              </li>
+              <li className="flex items-center text-zinc-300">
+                <CheckCircle className="text-green-500 mr-3 shrink-0" size={20} />
+                Qualidade garantida
+              </li>
+              <li className="flex items-center text-zinc-300">
+                <CheckCircle className="text-green-500 mr-3 shrink-0" size={20} />
+                Garantia estendida em toda linha
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>);
+}

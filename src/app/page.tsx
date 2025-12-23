@@ -23,21 +23,28 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-screen">
       {/* Hero Section */}
-      <section className="relative aspect-[1534/944]">
+      <section className="relative aspect-[425/636.5] xl:aspect-[1534/944]">
         <div className="absolute inset-0 z-0">
           <Image
             width={1534}
             height={944}
             src="/hero.png"
             alt="Motociclista em alta velocidade na rua"
-            className="w-screen h-full object-contain"
+            className="w-screen h-full object-contain hidden xl:block"
           />
-          <div className="absolute inset-0 bg-black/80"></div>
+          <Image
+            width={482}
+            height={636.5}
+            src="/hero-mb.jpg"
+            alt="Carro em alta velocidade na rua"
+            className="w-screen h-full object-contain opacity-40 block xl:hidden"
+          />
+          <div className="absolute bg-gradient-to-b from-black via-black/80 to-black  inset-0 xl:bg-none xl:bg-black/80"></div>
         </div>
 
-        <div className="relative z-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-12 xl:mt-20 w-full">
+        <div className="relative z-1 max-w-7xl mx-auto px-4 mb-10 sm:px-6 xl:px-8 mt-20 w-full">
           <div className="max-w-2xl">
             <h2 className="text-5xl md:text-6xl text-white leading-tight mb-4">
               Performance que <br />
@@ -47,16 +54,16 @@ export default function Home() {
               Pneus de alta performance desenvolvidos com tecnologia de ponta
               para garantir aderência e segurança em cada quilômetro.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-col xl:flex-row gap-4">
               <Link
                 href="/produtos"
-                className="bg-green-600 hover:bg-green-700 text-white items-center text-sm gap-2 flex px-4 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
+                className="bg-green-600 hover:bg-green-700 text-white items-center xl:w-full w-fit text-sm gap-2 flex px-4 py-3 rounded-md transition-colors shadow-lg shadow-green-900/50"
               >
                 Explorar produtos <ArrowRight className="text-xs h-4" />
               </Link>
               <Link
                 href="/#sobre"
-                className="bg-white hover:bg-gray-200 items-center flex gap-2 text-sm text-black px-4 py-3 rounded-md transition-colors"
+                className="bg-white hover:bg-gray-200 items-center flex gap-2 text-sm text-black w-fit xl:w-full px-4 py-3 rounded-md transition-colors"
               >
                 <DownloadIcon className="text-xs h-4" />
                 Baixar catálogo
@@ -65,9 +72,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative w-screen z-1 my-4 lg:m-12 xl:mt-20 border-t border-zinc-700" />
-        <div className="relative mt-1 z-1000 flex justify-center lg:gap-20 xl:gap-28 pt-8">
-          <div className="flex justify-center items-center flex-col">
+        <div className="relative w-[calc(100vw-40px)] mx-auto xl:w-screen z-1 my-20 border-t border-zinc-700" />
+        <div className="relative mt-1 z-1 flex xl:justify-center gap-4 items-center xl:gap-28 pt-8">
+          <div className="flex justify-center xl:items-center flex-col">
             <span className="block text-3xl font-bold text-green-500">
               30+
             </span>
@@ -75,7 +82,7 @@ export default function Home() {
               Anos de Experiência
             </span>
           </div>
-          <div className="flex justify-center items-center gap-2 flex-col">
+          <div className="flex justify-center xl:items-center gap-2 flex-col">
             <span className="block text-3xl font-bold text-green-500">
               2M+
             </span>
@@ -83,7 +90,7 @@ export default function Home() {
               Pneus Vendidos
             </span>
           </div>
-          <div className="flex justify-center items-center gap-2 flex-col">
+          <div className="flex justify-center xl:items-center gap-2 flex-col">
             <span className="block text-3xl font-bold text-green-500">
               98%
             </span>
@@ -92,7 +99,7 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className="z-1 relative lg:mt-12 flex justify-center flex-col items-center">
+        <div className="z-1 relative xl:mt-12 flex justify-center flex-col items-center">
           <span className="text-white/40 gap-8 uppercase">Role para baixo</span>
           <Image height={40} width={24} src="/scroll-to-below.svg" alt="Icone avisando indicando que tem mais conteúdo visível ao rolar a página" />
         </div>
@@ -100,17 +107,17 @@ export default function Home() {
 
       {/* Products Preview */}
       < section className="bg-zinc-100 py-20" >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-black mb-2">
-              Nossos <span className="text-green-600">Produtos</span>
+            <h2 className="text-3xl font-bold text-green-600 mb-2">
+              Nossos Produtos
             </h2>
-            <p className="text-zinc-600">
-              Conheça nossa linha completa para todos os tipos de terrenos
+            <p className="text-black">
+              Linha completa de pneus para todos os tipos de veículos e necessidades
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {MOCK_PRODUCTS.map((product) => (
               <Link key={product.id} href={`/produtos/${product.id}`}>
                 <ProductCard product={product} />
@@ -121,9 +128,9 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/produtos"
-              className="bg-black text-white px-8 py-3 rounded font-bold hover:bg-zinc-800 transition-colors inline-flex items-center gap-2"
+              className="bg-[#00AA0E] text-black px-4 capitalize py-3 rounded font-bold hover:bg-zinc-800 transition-colors inline-flex items-center gap-4"
             >
-              Todos os Produtos <ArrowRight size={18} />
+              Ver Todos os Produtos <ArrowRight size={18} />
             </Link>
           </div>
         </div>

@@ -17,9 +17,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         />
         <div className="absolute inset-0 border-[20px] border-zinc-800 rounded-full opacity-20 scale-90 group-hover:scale-95 transition-transform"></div>
       </div>
-      <div className="p-6 flex-1 flex flex-col bg-zinc-800">
+      <div className="p-6 flex-1 flex flex-col bg-[#000000B2] group-hover:bg-black/90">
         <h3 className="text-xl font-bold text-white mb-1">{product.name}</h3>
-        <p className="text-zinc-400 text-xs mb-4 line-clamp-2 min-h-[2.5em]">{product.description}</p>
+        <p className="text-[#E4E4E4] text-xs mb-4 line-clamp-2 min-h-[2.5em]">{product.description}</p>
         <div className="mt-auto flex items-center text-sm font-semibold text-zinc-300 group-hover:text-green-500 transition-colors">
           Ver Detalhes <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
         </div>

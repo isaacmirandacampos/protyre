@@ -23,7 +23,7 @@ export const Header = () => {
   };
 
   return (
-    <nav className="bg-black text-white sticky top-0 z-50 border-b border-zinc-800">
+    <nav className="bg-black/95 text-white top-0 z-50 border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -37,12 +37,11 @@ export const Header = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative py-2 text-sm font-medium transition-colors hover:text-green-500 ${
-                  isActive(link.href) ? "text-white" : "text-zinc-300"
-                }`}
+                data-active={isActive(link.href)}
+                className={`relative py-2 text-sm font-medium transition-colors hover:text-green-500 data-[active=true]:text-green-500  data-[active=false]:text-white/70"
+                  }`}
               >
                 {link.label}
-                {/* Underline ativo */}
                 {isActive(link.href) && (
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500" />
                 )}
@@ -79,11 +78,10 @@ export const Header = () => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${
-                  isActive(link.href)
-                    ? "text-green-500 bg-green-500/10"
-                    : "text-zinc-300 hover:text-white hover:bg-zinc-800"
-                }`}
+                className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${isActive(link.href)
+                  ? "text-green-500 bg-green-500/10"
+                  : "text-zinc-300 hover:text-white hover:bg-zinc-800"
+                  }`}
               >
                 {link.label}
               </Link>

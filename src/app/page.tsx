@@ -1,5 +1,6 @@
 import { type Metadata } from "next";
 import Link from "next/link";
+import Image from 'next/image'
 import {
   CheckCircle,
   ArrowRight,
@@ -24,17 +25,19 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center">
+      <section className="relative aspect-[1534/944]">
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1920"
-            alt="Motorcycle on road"
-            className="w-full h-full object-cover"
+          <Image
+            width={1534}
+            height={944}
+            src="/hero.png"
+            alt="Motociclista em alta velocidade na rua"
+            className="w-screen h-full object-contain"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/80"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-12 w-full">
           <div className="max-w-2xl">
             <h2 className="text-5xl md:text-6xl text-white leading-tight mb-4">
               Performance que <br />
@@ -59,39 +62,40 @@ export default function Home() {
                 Baixar catálogo
               </Link>
             </div>
-
-            <div className="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
-              <div>
-                <span className="block text-3xl font-bold text-green-500">
-                  30+
-                </span>
-                <span className="text-xs text-zinc-400 uppercase tracking-wider">
-                  Anos de Experiência
-                </span>
-              </div>
-              <div>
-                <span className="block text-3xl font-bold text-green-500">
-                  2M+
-                </span>
-                <span className="text-xs text-zinc-400 uppercase tracking-wider">
-                  Pneus Vendidos
-                </span>
-              </div>
-              <div>
-                <span className="block text-3xl font-bold text-green-500">
-                  98%
-                </span>
-                <span className="text-xs text-zinc-400 uppercase tracking-wider">
-                  Satisfação
-                </span>
-              </div>
-            </div>
           </div>
         </div>
-      </section>
+
+        <div className="w-screen z-100 m-12 border-t border-zinc-700" />
+        <div className="mt-12 z-1 flex justify-center gap-8 pt-8">
+          <div>
+            <span className="block text-3xl font-bold text-green-500">
+              30+
+            </span>
+            <span className="text-xs text-zinc-400 uppercase tracking-wider">
+              Anos de Experiência
+            </span>
+          </div>
+          <div>
+            <span className="block text-3xl font-bold text-green-500">
+              2M+
+            </span>
+            <span className="text-xs text-zinc-400 uppercase tracking-wider">
+              Pneus Vendidos
+            </span>
+          </div>
+          <div>
+            <span className="block text-3xl font-bold text-green-500">
+              98%
+            </span>
+            <span className="text-xs text-zinc-400 uppercase tracking-wider">
+              Satisfação
+            </span>
+          </div>
+        </div>
+      </section >
 
       {/* Products Preview */}
-      <section className="bg-zinc-100 py-20">
+      < section className="bg-zinc-100 py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-black mb-2">
@@ -119,10 +123,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* About Section */}
-      <section id="sobre" className="bg-black py-20 overflow-hidden">
+      < section id="sobre" className="bg-black py-20 overflow-hidden" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
@@ -164,9 +168,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
       <DistributorSection />
-    </div>
+    </div >
   );
 }
 

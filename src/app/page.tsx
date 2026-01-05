@@ -77,7 +77,7 @@ const Hero = () => {
     </div>
 
 
-    <div className="relative z-1 max-w-7xl mx-auto px-4 mb-10 sm:px-6 xl:px-8 mt-28 w-full">
+    <div className="relative z-1 max-w-7xl mx-auto px-4 mb-8 sm:mb-10 sm:px-6 xl:px-8 mt-8 sm:mt-14 lg:mt-28 w-full">
       <div className="max-w-2xl">
         <h2 className="text-5xl md:text-6xl text-white leading-tight my-8">
           Performance que <br />
@@ -105,13 +105,13 @@ const Hero = () => {
       </div>
     </div>
 
-    <div className="relative w-[calc(100vw-40px)] mx-auto sm:w-screen z-1 my-20 border-t border-zinc-700" />
-    <div className="relative mt-1 z-1 flex justify-center gap-4 items-center gap-12 sm:gap-28 pt-8">
+    <div className="relative w-[calc(100vw-40px)] mx-auto sm:w-screen z-1 my-2 sm:my-10 lg:my-20 border-t border-zinc-700" />
+    <div className="relative mt-1 z-1 flex justify-center gap-6 items-center sm:gap-28 pt-8">
       <div className="flex justify-center xl:items-center flex-col">
         <span className="block text-3xl text-green-500">
           30+
         </span>
-        <span className="text-sm text-zinc-400 capitalize tracking-wider">
+        <span className="text-xs sm:text-sm text-zinc-400 capitalize tracking-wider">
           Anos de Experiência
         </span>
       </div>
@@ -119,7 +119,7 @@ const Hero = () => {
         <span className="block text-3xl text-green-500">
           2M+
         </span>
-        <span className="text-sm text-zinc-400 capitalize tracking-wider">
+        <span className="text-xs sm:text-sm text-zinc-400 capitalize tracking-wider">
           Pneus Vendidos
         </span>
       </div>
@@ -127,7 +127,7 @@ const Hero = () => {
         <span className="block text-3xl text-green-500">
           98%
         </span>
-        <span className="text-sm text-zinc-400 capitalize tracking-wider">
+        <span className="text-xs sm:text-sm text-zinc-400 capitalize tracking-wider">
           Satisfação
         </span>
       </div>

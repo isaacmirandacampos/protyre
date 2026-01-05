@@ -464,15 +464,15 @@ const DistributorSection = () => {
 
 const Sobre = () => {
   return (<section id="sobre" className="bg-black overflow-hidden relative">
-    <div className="max-w-7xl 2xl:mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="relative w-[40vw] py-20">
+    <div className="max-w-7xl xl:mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="relative  aspect-[737/527] py-8 lg:py-20">
           <Image
             width={737}
             height={527}
             src="/sobre-nos.png"
             alt="Protyre Headquarters"
-            className="relative max-w-[650px] w-[70vw] z-1 shadow-2xl shadow-black/50"
+            className="relative lg:max-w-[650px] mx-auto w-[90vw] lg:w-[50vw] 2xl:w-[70vw] z-1 shadow-2xl shadow-black/50"
           />
         </div>
         <div>
@@ -486,7 +486,7 @@ const Sobre = () => {
           </div>
 
           {/* Conteúdo de Texto - Z-Index maior para ficar por cima */}
-          <div className="relative z-10">
+          <div className="relative z-10 w-[90vw] pb-8 mx-auto lg:w-full">
             <h2 className="text-3xl font-bold text-green-500 mb-6">
               Sobre Nós
             </h2>

@@ -99,10 +99,11 @@ export default async function ProductDetailPage({
     <div className="bg-[#E7EEE5]">
       <div className="py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-black text-xs mt-4 uppercase">
+          <p className="text-black text-sm">
             <Link href="/">Home</Link> / <Link href="/produtos">Produtos</Link> /{" "}
             <Link href={`/produtos/${product.name}`} className="text-black font-bold">{product.name}</Link>
           </p>
+
         </div>
       </div>
 

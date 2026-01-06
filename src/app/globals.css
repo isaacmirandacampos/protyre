@@ -6,6 +6,6 @@
 
 @layer utilities {
   .bg-gradient {
-    background: linear-gradient(to right, rgba(0, 201, 80, 0.3), #000000);
+    background: linear-gradient(to right, #00C9504D, #00C9504D, #000000, #000000, #000000);
   }
 }

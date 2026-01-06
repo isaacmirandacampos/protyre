@@ -35,21 +35,23 @@ const ContactSection = () => {
   );
 };
 
-const Card = ({ children, title, body, info }: any) => (<div className="flex flex-col lg:flex-row items-center p-6 sm:p-8 bg-[##FFFFFF0D] rounded-3xl border border-[#FFFFFF1A] shadow-sm hover:shadow-md transition-shadow">
-  <div className="bg-[#00AA0E1A] p-4 rounded-2xl mr-6 shrink-0">
-    {children}
-  </div>
-  <div className='flex flex-col text-md'>
-    <span className='text-white'>
-      {title}
-    </span>
-    <span className="text-[#00AA0E] font-medium sm:text-md">
-      {body}
-    </span>
-    <span className="text-[#FFFFFF80] font-medium sm:text-md">
-      {info}
-    </span>
-  </div>
-</div>)
+const Card = ({ children, title, body, info }: any 	// eslint-disable-line
+) => (
+  <div className="flex flex-col lg:flex-row items-center p-6 sm:p-8 bg-[##FFFFFF0D] rounded-3xl border border-[#FFFFFF1A] shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-[#00AA0E1A] p-4 rounded-2xl mr-6 shrink-0">
+      {children}
+    </div>
+    <div className='flex flex-col text-md'>
+      <span className='text-white'>
+        {title}
+      </span>
+      <span className="text-[#00AA0E] font-medium sm:text-md">
+        {body}
+      </span>
+      <span className="text-[#FFFFFF80] font-medium sm:text-md">
+        {info}
+      </span>
+    </div>
+  </div>)
 
 export { ContactSection };

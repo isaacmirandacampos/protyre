@@ -133,7 +133,7 @@ const Hero = () => {
     </div>
     <div className="z-1 relative my-6 sm:my-12 flex justify-center flex-col items-center">
       <span className="text-white/40 gap-8 uppercase">Role para baixo</span>
-      <Image height={40} width={24} src="/scroll-to-below.svg" alt="Icone avisando indicando que tem mais conteúdo visível ao rolar a página" />
+      <Image priority height={40} width={24} src="/scroll-to-below.svg" alt="Icone avisando indicando que tem mais conteúdo visível ao rolar a página" />
     </div>
   </section >
   )
@@ -148,6 +148,7 @@ const Sobre = () => {
           <Image
             width={737}
             height={527}
+            priority
             src="/sobre-nos.png"
             alt="Protyre Headquarters"
             className="relative lg:max-w-[650px] mx-auto w-[90vw] lg:w-[50vw] 2xl:w-[70vw] z-1 shadow-2xl shadow-black/50"
@@ -158,6 +159,7 @@ const Sobre = () => {
             <Image
               src="/sobre-nos-arrow-bg.png"
               alt="Background Pattern"
+              priority
               fill
               className="object-cover w-screen opacity-15 object-right-center"
             />

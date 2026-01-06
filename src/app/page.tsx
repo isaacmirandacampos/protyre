@@ -5,7 +5,7 @@ import {
   ArrowRight,
   DownloadIcon,
 } from "lucide-react";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductListCarousel } from "@/components/ProductListCarousel";
 import DistributorSection from "@/components/DistributorSection";
 import { ContactSection } from "@/components/ContactSection";
 import { createClient } from "@/prismicio";
@@ -57,7 +57,7 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument): Product |
 export default async function Home() {
   const client = createClient();
   const productsData = await client.getAllByType('product');
-  const products = productsData.map(convertPrismicProductToProduct).filter((p): p is Product => p !== null).slice(0, 4);
+  const products = productsData.map(convertPrismicProductToProduct).filter((p): p is Product => p !== null);
   return (
     <div className="flex flex-col w-screen">
       <Hero />
@@ -72,13 +72,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {products.map((product) => (
-              <Link key={product.id} href={`/produtos/${product.id}`}>
-                <ProductCard product={product} />
-              </Link>
-            ))}
-          </div>
+          <ProductListCarousel products={products} />
 
           <div className="text-center mt-12">
             <Link

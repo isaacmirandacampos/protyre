@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="bg-black py-24">
+    <section id="contato" className="bg-black py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Cabeçalho da Seção */}

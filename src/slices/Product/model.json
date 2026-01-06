@@ -43,33 +43,54 @@
             "thumbnails": []
           }
         },
-        "produto": {
-          "type": "Image",
+        "imagens": {
+          "type": "Group",
           "config": {
-            "label": "Imagem de produtos",
-            "constraint": {},
-            "thumbnails": [
-              {
-                "name": "imagem_2",
-                "width": 150,
-                "height": 150
+            "label": "imagem de produtos",
+            "repeat": true,
+            "fields": {
+              "imagem": {
+                "type": "Image",
+                "config": {
+                  "label": "imagem",
+                  "constraint": {
+                    "width": 150,
+                    "height": 150
+                  },
+                  "thumbnails": []
+                }
               },
-              {
-                "name": "imagem_3",
-                "width": 150,
-                "height": 150
+              "imagem2": {
+                "type": "Image",
+                "config": {
+                  "label": "imagem2",
+                  "constraint": {
+                    "width": 150,
+                    "height": 150
+                  },
+                  "thumbnails": []
+                }
               },
-              {
-                "name": "imagem_4",
-                "width": 150,
-                "height": 150
+              "imagem3": {
+                "type": "Image",
+                "config": {
+                  "label": "imagem3",
+                  "constraint": {
+                    "width": 150,
+                    "height": 150
+                  },
+                  "thumbnails": []
+                }
               },
-              {
-                "name": "imagem_5",
-                "width": 150,
-                "height": 150
+              "imagem_4": {
+                "type": "Image",
+                "config": {
+                  "label": "imagem_4",
+                  "constraint": {},
+                  "thumbnails": []
+                }
               }
-            ]
+            }
           }
         },
         "catalogo_para_download": {

@@ -11,13 +11,25 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument): Product |
 
   const data = productSlice.primary;
 
+  // Extrair todas as imagens do grupo repetível
+  const allImages: string[] = [];
+  if (data.imagens && Array.isArray(data.imagens)) {
+    data.imagens.forEach((group: any) => {
+      // Adicionar todas as imagens do grupo (imagem, imagem2, imagem3, imagem_4)
+      if (group.imagem?.url) allImages.push(group.imagem.url);
+      if (group.imagem2?.url) allImages.push(group.imagem2.url);
+      if (group.imagem3?.url) allImages.push(group.imagem3.url);
+      if (group.imagem_4?.url) allImages.push(group.imagem_4.url);
+    });
+  }
+
   return {
     id: doc.uid,
     name: data.title || 'Produto',
     code: data.codigo_do_produto?.toString() || '',
     description: data.descricao?.[0]?.text || '',
     fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
-    image: data.produto?.url || '/pneu.png',
+    image: allImages[0] || '/pneu.png', // Primeira imagem disponível
     specs: {
       measure: '',
       position: '',

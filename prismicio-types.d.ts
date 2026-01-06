@@ -299,6 +299,51 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Product → Default → Primary → imagem de produtos*
+ */
+export interface ProductSliceDefaultPrimaryImagensItem {
+  /**
+   * imagem field in *Product → Default → Primary → imagem de produtos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.imagens[].imagem
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagem: prismic.ImageField<never>;
+
+  /**
+   * imagem2 field in *Product → Default → Primary → imagem de produtos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.imagens[].imagem2
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagem2: prismic.ImageField<never>;
+
+  /**
+   * imagem3 field in *Product → Default → Primary → imagem de produtos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.imagens[].imagem3
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagem3: prismic.ImageField<never>;
+
+  /**
+   * imagem_4 field in *Product → Default → Primary → imagem de produtos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.imagens[].imagem_4
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagem_4: prismic.ImageField<never>;
+}
+
+/**
  * Primary content in *Product → Default → Primary*
  */
 export interface ProductSliceDefaultPrimary {
@@ -343,16 +388,14 @@ export interface ProductSliceDefaultPrimary {
   imagem_na_descricao: prismic.ImageField<never>;
 
   /**
-   * Imagem de produtos field in *Product → Default → Primary*
+   * imagem de produtos field in *Product → Default → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: product.default.primary.produto
-   * - **Documentation**: https://prismic.io/docs/fields/image
+   * - **API ID Path**: product.default.primary.imagens[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  produto: prismic.ImageField<
-    "imagem_2" | "imagem_3" | "imagem_4" | "imagem_5"
-  >;
+  imagens: prismic.GroupField<Simplify<ProductSliceDefaultPrimaryImagensItem>>;
 
   /**
    * Catalogo para download field in *Product → Default → Primary*
@@ -427,6 +470,7 @@ declare module "@prismicio/client" {
       HeroSliceDefault,
       HeroSliceImageRight,
       ProductSlice,
+      ProductSliceDefaultPrimaryImagensItem,
       ProductSliceDefaultPrimary,
       ProductSliceVariation,
       ProductSliceDefault,

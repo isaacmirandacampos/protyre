@@ -4,12 +4,45 @@ import Link from "next/link";
 import { ChevronLeft, Download } from "lucide-react";
 import { createClient } from "@/prismicio";
 import { Content } from "@prismicio/client";
+import { ProductCarousel } from "@/components/ProductCarousel";
 
 function convertPrismicProductToProduct(doc: Content.ProductDocument) {
   const productSlice = doc.data.slices[0] as Content.ProductSlice;
   if (!productSlice || productSlice.slice_type !== 'product') return null;
 
   const data = productSlice.primary;
+
+  // Extrair todas as imagens do grupo repetível
+  const carouselImages: Array<{ url: string; alt: string }> = [];
+  if (data.imagens && Array.isArray(data.imagens)) {
+    data.imagens.forEach((group: any, groupIndex: number) => {
+      // Adicionar todas as imagens do grupo (imagem, imagem2, imagem3, imagem_4)
+      if (group.imagem?.url) {
+        carouselImages.push({
+          url: group.imagem.url,
+          alt: group.imagem.alt || `Imagem do produto ${groupIndex * 4 + 1}`
+        });
+      }
+      if (group.imagem2?.url) {
+        carouselImages.push({
+          url: group.imagem2.url,
+          alt: group.imagem2.alt || `Imagem do produto ${groupIndex * 4 + 2}`
+        });
+      }
+      if (group.imagem3?.url) {
+        carouselImages.push({
+          url: group.imagem3.url,
+          alt: group.imagem3.alt || `Imagem do produto ${groupIndex * 4 + 3}`
+        });
+      }
+      if (group.imagem_4?.url) {
+        carouselImages.push({
+          url: group.imagem_4.url,
+          alt: group.imagem_4.alt || `Imagem do produto ${groupIndex * 4 + 4}`
+        });
+      }
+    });
+  }
 
   return {
     id: doc.uid,
@@ -18,7 +51,8 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument) {
     description: data.descricao?.[0]?.text || '',
     fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
     descricaoRichText: data.descricao,
-    image: data.produto?.url,
+    image: carouselImages[0]?.url || '/pneu.png',
+    carouselImages,
     imagemDescricao: data.imagem_na_descricao?.url,
     catalogoUrl: data.catalogo_para_download?.url,
   };
@@ -50,6 +84,17 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  // Preparar imagens para o carrossel
+  const allImages = [];
+
+  // Se houver imagens no carrossel, usar elas
+  if (product.carouselImages && product.carouselImages.length > 0) {
+    allImages.push(...product.carouselImages);
+  } else if (product.image) {
+    // Caso contrário, usar a imagem principal
+    allImages.push({ url: product.image, alt: product.name });
+  }
+
   return (
     <div className="bg-[#E7EEE5]">
       <div className="py-4">
@@ -64,25 +109,15 @@ export default async function ProductDetailPage({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-12 bg-zinc-50 flex flex-col items-center justify-center relative border-r border-zinc-100">
+            <div className="relative border-r border-zinc-100 min-h-[600px]">
               <Link
                 href="/produtos"
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md text-zinc-400 hover:text-green-600 lg:hidden"
+                className="absolute left-4 top-4 z-10 p-2 rounded-full bg-white shadow-md text-zinc-400 hover:text-green-600 lg:hidden"
               >
                 <ChevronLeft />
               </Link>
 
-              <img
-                src={product.image}
-                alt={product.name}
-                className="max-h-[500px] w-auto object-contain mix-blend-multiply"
-              />
-
-              <div className="flex gap-2 mt-8">
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <div className="w-3 h-3 rounded-full bg-zinc-300"></div>
-                <div className="w-3 h-3 rounded-full bg-zinc-300"></div>
-              </div>
+              <ProductCarousel images={allImages} />
             </div>
 
             {/* Right Column: Info */}

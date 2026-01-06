@@ -5,7 +5,7 @@ import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface ProductImage {
+export interface ProductImage {
   url: string;
   alt?: string;
 }

@@ -1,10 +1,11 @@
 import { type Metadata } from "next";
+import Image from 'next/image'
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, Download } from "lucide-react";
 import { createClient } from "@/prismicio";
-import { Content } from "@prismicio/client";
-import { ProductCarousel } from "@/components/ProductCarousel";
+import { Content, asText } from "@prismicio/client";
+import { ProductCarousel, ProductImage } from "@/components/ProductCarousel";
 
 function convertPrismicProductToProduct(doc: Content.ProductDocument) {
   const productSlice = doc.data.slices[0] as Content.ProductSlice;
@@ -13,48 +14,58 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument) {
   const data = productSlice.primary;
 
   // Extrair todas as imagens do grupo repetível
-  const carouselImages: Array<{ url: string; alt: string }> = [];
+  const carouselImages: Array<{ url: string; alt?: string }> = [];
   if (data.imagens && Array.isArray(data.imagens)) {
-    data.imagens.forEach((group: any, groupIndex: number) => {
+    data.imagens.forEach((group: any, // eslint-disable-line
+      groupIndex: number) => {
       // Adicionar todas as imagens do grupo (imagem, imagem2, imagem3, imagem_4)
       if (group.imagem?.url) {
         carouselImages.push({
           url: group.imagem.url,
-          alt: group.imagem.alt || `Imagem do produto ${groupIndex * 4 + 1}`
+          alt: group.imagem.alt ?? `Imagem do produto ${groupIndex * 4 + 1}`
         });
       }
       if (group.imagem2?.url) {
         carouselImages.push({
           url: group.imagem2.url,
-          alt: group.imagem2.alt || `Imagem do produto ${groupIndex * 4 + 2}`
+          alt: group.imagem2.alt ?? `Imagem do produto ${groupIndex * 4 + 2}`
         });
       }
       if (group.imagem3?.url) {
         carouselImages.push({
           url: group.imagem3.url,
-          alt: group.imagem3.alt || `Imagem do produto ${groupIndex * 4 + 3}`
+          alt: group.imagem3.alt ?? `Imagem do produto ${groupIndex * 4 + 3}`
         });
       }
       if (group.imagem_4?.url) {
         carouselImages.push({
           url: group.imagem_4.url,
-          alt: group.imagem_4.alt || `Imagem do produto ${groupIndex * 4 + 4}`
+          alt: group.imagem_4.alt ?? `Imagem do produto ${groupIndex * 4 + 4}`
         });
       }
     });
   }
 
+  // Extrair texto da descrição
+  const fullDescription = data.descricao ? asText(data.descricao) : '';
+  const description = fullDescription.split('\n')[0] || '';
+
+  // Extrair URL do catálogo (LinkToMediaField)
+  const catalogoUrl = data.catalogo_para_download && 'url' in data.catalogo_para_download
+    ? data.catalogo_para_download.url
+    : undefined;
+
   return {
     id: doc.uid,
     name: data.title,
     code: data.codigo_do_produto?.toString() || '',
-    description: data.descricao?.[0]?.text || '',
-    fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
+    description,
+    fullDescription,
     descricaoRichText: data.descricao,
     image: carouselImages[0]?.url || '/pneu.png',
     carouselImages,
     imagemDescricao: data.imagem_na_descricao?.url,
-    catalogoUrl: data.catalogo_para_download?.url,
+    catalogoUrl,
   };
 }
 
@@ -74,7 +85,7 @@ export default async function ProductDetailPage({
 
   try {
     productDoc = await client.getByUID('product', id);
-  } catch (error) {
+  } catch {
     notFound();
   }
 
@@ -85,14 +96,14 @@ export default async function ProductDetailPage({
   }
 
   // Preparar imagens para o carrossel
-  const allImages = [];
+  const allImages: ProductImage[] = [];
 
   // Se houver imagens no carrossel, usar elas
   if (product.carouselImages && product.carouselImages.length > 0) {
     allImages.push(...product.carouselImages);
   } else if (product.image) {
     // Caso contrário, usar a imagem principal
-    allImages.push({ url: product.image, alt: product.name });
+    allImages.push({ url: product.image, alt: product.name ?? '' });
   }
 
   return (
@@ -135,9 +146,11 @@ export default async function ProductDetailPage({
               </div>
 
               {product.imagemDescricao && (
-                <img
+                <Image
+                  height={150}
+                  width={150}
                   src={product.imagemDescricao}
-                  alt={product.name}
+                  alt={product.name as string}
                   className="max-h-[500px] w-auto object-contain mix-blend-multiply"
                 />
               )}
@@ -171,7 +184,7 @@ export async function generateMetadata({
 
   try {
     productDoc = await client.getByUID('product', id);
-  } catch (error) {
+  } catch {
     return {
       title: "Produto não encontrado - Protyre",
     };

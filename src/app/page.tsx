@@ -9,7 +9,7 @@ import { ProductListCarousel } from "@/components/ProductListCarousel";
 import DistributorSection from "@/components/DistributorSection";
 import { ContactSection } from "@/components/ContactSection";
 import { createClient } from "@/prismicio";
-import { Content } from "@prismicio/client";
+import { Content, asText } from "@prismicio/client";
 import { Product } from "@/types/product";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,7 +29,7 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument): Product |
   // Extrair todas as imagens do grupo repetível
   const allImages: string[] = [];
   if (data.imagens && Array.isArray(data.imagens)) {
-    data.imagens.forEach((group: any) => {
+    data.imagens.forEach((group) => {
       // Adicionar todas as imagens do grupo (imagem, imagem2, imagem3, imagem_4)
       if (group.imagem?.url) allImages.push(group.imagem.url);
       if (group.imagem2?.url) allImages.push(group.imagem2.url);
@@ -38,12 +38,16 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument): Product |
     });
   }
 
+  // Extrair texto da descrição
+  const fullDescription = data.descricao ? asText(data.descricao) : '';
+  const description = fullDescription.split('\n')[0] || '';
+
   return {
     id: doc.uid,
     name: data.title || "",
     code: data.codigo_do_produto?.toString() || '',
-    description: data.descricao?.[0]?.text || '',
-    fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
+    description,
+    fullDescription,
     image: allImages[0] || "/pneu.png", // Primeira imagem disponível
     specs: {
       measure: '',

@@ -69,49 +69,49 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = HeroSlice;
+type ProductDocumentDataSlicesSlice = ProductSlice;
 
 /**
- * Content for home documents
+ * Content for Product documents
  */
-interface HomeDocumentData {
+interface ProductDocumentData {
   /**
-   * Slice Zone field in *home*
+   * Slice Zone field in *Product*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.slices[]
+   * - **API ID Path**: product.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
-   * Meta Title field in *home*
+  slices: prismic.SliceZone<ProductDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Product*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: home.meta_title
+   * - **API ID Path**: product.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *home*
+   * Meta Description field in *Product*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: home.meta_description
+   * - **API ID Path**: product.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *home*
+   * Meta Image field in *Product*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.meta_image
+   * - **API ID Path**: product.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
@@ -119,180 +119,22 @@ interface HomeDocumentData {
 }
 
 /**
- * home document from Prismic
+ * Product document from Prismic
  *
- * - **API ID**: `home`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type HomeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
-
-type PageDocumentDataSlicesSlice = RichTextSlice;
-
-/**
- * Content for Page documents
- */
-interface PageDocumentData {
-  /**
-   * Title field in *Page*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * Slice Zone field in *Page*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/slices
-   */
-  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
-   * Meta Title field in *Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: page.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *Page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: page.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Page*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  meta_image: prismic.ImageField<never>;
-}
-
-/**
- * Page document from Prismic
- *
- * - **API ID**: `page`
+ * - **API ID**: `product`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/content-modeling
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+export type ProductDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductDocumentData>,
+    "product",
+    Lang
+  >;
 
-interface Page2DocumentData {}
-
-/**
- * page2 document from Prismic
- *
- * - **API ID**: `page2`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type Page2Document<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<Page2DocumentData>, "page2", Lang>;
-
-type TesteDocumentDataSlicesSlice = never;
-
-/**
- * Content for teste documents
- */
-interface TesteDocumentData {
-  /**
-   * teste field in *teste*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: testa
-   * - **API ID Path**: teste.teste
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  teste: prismic.KeyTextField;
-
-  /**
-   * Slice Zone field in *teste*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: teste.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/slices
-   */
-  slices: prismic.SliceZone<TesteDocumentDataSlicesSlice> /**
-   * Meta Title field in *teste*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: teste.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *teste*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: teste.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *teste*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: teste.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  meta_image: prismic.ImageField<never>;
-}
-
-/**
- * teste document from Prismic
- *
- * - **API ID**: `teste`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type TesteDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<TesteDocumentData>, "teste", Lang>;
-
-export type AllDocumentTypes =
-  | HomeDocument
-  | PageDocument
-  | Page2Document
-  | TesteDocument;
+export type AllDocumentTypes = ProductDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -457,48 +299,100 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
- * Primary content in *RichText → Default → Primary*
+ * Primary content in *Product → Default → Primary*
  */
-export interface RichTextSliceDefaultPrimary {
+export interface ProductSliceDefaultPrimary {
   /**
-   * Content field in *RichText → Default → Primary*
+   * Title field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: titulo
+   * - **API ID Path**: product.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * código do produto field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.codigo_do_produto
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  codigo_do_produto: prismic.NumberField;
+
+  /**
+   * Descrição field in *Product → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.default.primary.content
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.descricao
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  content: prismic.RichTextField;
+  descricao: prismic.RichTextField;
+
+  /**
+   * Imagem na descrição field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.imagem_na_descricao
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagem_na_descricao: prismic.ImageField<never>;
+
+  /**
+   * Imagem de produtos field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.produto
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  produto: prismic.ImageField<
+    "imagem_2" | "imagem_3" | "imagem_4" | "imagem_5"
+  >;
+
+  /**
+   * Catalogo para download field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.catalogo_para_download
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  catalogo_para_download: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
- * Default variation for RichText Slice
+ * Default variation for Product Slice
  *
  * - **API ID**: `default`
- * - **Description**: RichText
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
+export type ProductSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<RichTextSliceDefaultPrimary>,
+  Simplify<ProductSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *RichText*
+ * Slice variation for *Product*
  */
-type RichTextSliceVariation = RichTextSliceDefault;
+type ProductSliceVariation = ProductSliceDefault;
 
 /**
- * RichText Shared Slice
+ * Product Shared Slice
  *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
+ * - **API ID**: `product`
+ * - **Description**: Product
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
+export type ProductSlice = prismic.SharedSlice<
+  "product",
+  ProductSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -522,17 +416,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      HomeDocument,
-      HomeDocumentData,
-      HomeDocumentDataSlicesSlice,
-      PageDocument,
-      PageDocumentData,
-      PageDocumentDataSlicesSlice,
-      Page2Document,
-      Page2DocumentData,
-      TesteDocument,
-      TesteDocumentData,
-      TesteDocumentDataSlicesSlice,
+      ProductDocument,
+      ProductDocumentData,
+      ProductDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
@@ -540,10 +426,10 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceImageRight,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
+      ProductSlice,
+      ProductSliceDefaultPrimary,
+      ProductSliceVariation,
+      ProductSliceDefault,
     };
   }
 }

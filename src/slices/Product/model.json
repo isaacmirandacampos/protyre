@@ -1,0 +1,88 @@
+{
+  "id": "product",
+  "type": "SharedSlice",
+  "name": "Product",
+  "description": "Product",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "titulo"
+          }
+        },
+        "codigo_do_produto": {
+          "type": "Number",
+          "config": {
+            "label": "código do produto",
+            "placeholder": ""
+          }
+        },
+        "descricao": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descrição",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "imagem_na_descricao": {
+          "type": "Image",
+          "config": {
+            "label": "Imagem na descrição",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "produto": {
+          "type": "Image",
+          "config": {
+            "label": "Imagem de produtos",
+            "constraint": {},
+            "thumbnails": [
+              {
+                "name": "imagem_2",
+                "width": 150,
+                "height": 150
+              },
+              {
+                "name": "imagem_3",
+                "width": 150,
+                "height": 150
+              },
+              {
+                "name": "imagem_4",
+                "width": 150,
+                "height": 150
+              },
+              {
+                "name": "imagem_5",
+                "width": 150,
+                "height": 150
+              }
+            ]
+          }
+        },
+        "catalogo_para_download": {
+          "type": "Link",
+          "config": {
+            "label": "Catalogo para download",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

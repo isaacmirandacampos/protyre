@@ -6,7 +6,7 @@
   "author": "Prismic <contact@prismic.io> (https://prismic.io)",
   "scripts": {
     "dev": "concurrently \"npm:next:dev\" \"npm:slicemachine\" --names \"next,slicemachine\" --prefix-colors blue,magenta",
-    "next:dev": "next dev",
+    "next:dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -21,7 +21,9 @@
     "lucide-react": "^0.555.0",
     "next": "^15.0.0",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "react-hook-form": "^7.70.0",
+    "resend": "^6.6.0"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.87",

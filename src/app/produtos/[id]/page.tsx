@@ -21,26 +21,19 @@ export default async function ProductDetailPage({
   }
 
   return (
-    <div className="bg-zinc-50 min-h-screen">
-      <div className="bg-zinc-100 py-4 border-b border-zinc-200">
+    <div className="bg-[#E7EEE5]">
+      <div className="py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/produtos"
-            className="text-sm text-zinc-500 hover:text-green-600 flex items-center gap-1"
-          >
-            <ChevronLeft size={14} /> Voltar para produtos
-          </Link>
-          <p className="text-zinc-400 text-xs mt-2 uppercase">
-            Home / Produtos /{" "}
-            <span className="text-black font-bold">{product.name}</span>
+          <p className="text-black text-xs mt-4 uppercase">
+            <Link href="/">Home</Link> / <Link href="/produtos">Produtos</Link> /{" "}
+            <Link href={`/produtos/${product.name}`} className="text-black font-bold">{product.name}</Link>
           </p>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Left Column: Image */}
             <div className="p-12 bg-zinc-50 flex flex-col items-center justify-center relative border-r border-zinc-100">
               <Link
                 href="/produtos"
@@ -50,7 +43,7 @@ export default async function ProductDetailPage({
               </Link>
 
               <img
-                src={product.image}
+                src="/pneu.png"
                 alt={product.name}
                 className="max-h-[500px] w-auto object-contain mix-blend-multiply"
               />
@@ -71,65 +64,28 @@ export default async function ProductDetailPage({
                     {product.specs.measure.split(" ")[0]}
                   </span>
                 </h1>
-                <p className="text-zinc-500">Código: {product.code}</p>
+                <p className="text-[#777777]">Código: {product.code}</p>
               </div>
 
-              <p className="text-zinc-600 my-8 leading-relaxed">
+              <p className="text-[#353535] text-md my-2 leading-relaxed">
                 {product.fullDescription}
               </p>
 
-              <div className="border rounded-lg overflow-hidden mb-8">
-                <div className="grid grid-cols-3 border-b">
-                  <div className="col-span-1 bg-white p-4 font-bold text-zinc-800 text-right pr-6">
-                    Código:
-                  </div>
-                  <div className="col-span-2 bg-white p-4 text-zinc-600 pl-6">
-                    {product.code}
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 border-b">
-                  <div className="col-span-1 bg-zinc-100 p-4 font-bold text-zinc-800 text-right pr-6">
-                    Medida:
-                  </div>
-                  <div className="col-span-2 bg-zinc-100 p-4 text-zinc-600 pl-6">
-                    {product.specs.measure}
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 border-b">
-                  <div className="col-span-1 bg-white p-4 font-bold text-zinc-800 text-right pr-6">
-                    Dianteiro/Traseiro:
-                  </div>
-                  <div className="col-span-2 bg-white p-4 text-zinc-600 pl-6">
-                    {product.specs.position}
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 border-b">
-                  <div className="col-span-1 bg-zinc-100 p-4 font-bold text-zinc-800 text-right pr-6">
-                    Câmara:
-                  </div>
-                  <div className="col-span-2 bg-zinc-100 p-4 text-zinc-600 pl-6">
-                    {product.specs.tube}
-                  </div>
-                </div>
-                <div className="grid grid-cols-3">
-                  <div className="col-span-1 bg-white p-4 font-bold text-zinc-800 text-right pr-6">
-                    Índice de Carga/Vel.:
-                  </div>
-                  <div className="col-span-2 bg-white p-4 text-zinc-600 pl-6">
-                    {product.specs.loadIndex}
-                  </div>
-                </div>
-              </div>
+              <img
+                src="/pneu-spec.png"
+                alt={product.name}
+                className="max-h-[500px] w-auto object-contain mix-blend-multiply"
+              />
 
-              <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded font-bold transition-colors flex items-center gap-3 shadow-lg shadow-green-900/20">
+              <button className="bg-[#00AA0E] hover:bg-green-700 text-white mt-4 px-8 py-2 text-sm rounded font-bold transition-colors flex items-center gap-3">
                 <Download size={20} />
-                Baixar Catálogo Técnico
+                Baixar Catálogo
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

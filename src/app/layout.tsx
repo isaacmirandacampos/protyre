@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={"antialiased font-[] text-zinc-900 bg-black min-h-screen flex flex-col ".concat(lato.className)}>
+      <body className={"antialiased text-zinc-900 bg-black flex flex-col ".concat(lato.className)}>
         <Header />
         <main className="flex-grow relative bg-white">
           {children}

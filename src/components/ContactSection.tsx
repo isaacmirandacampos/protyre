@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactSection = () => {
   return (
-    <section className="bg-black py-24">
+    <section id="contact" className="bg-black py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Cabeçalho da Seção */}
@@ -35,7 +35,7 @@ const ContactSection = () => {
   );
 };
 
-const Card = ({ children, title, body, info }) => (<div className="flex flex-col lg:flex-row items-center p-6 sm:p-8 bg-[##FFFFFF0D] rounded-3xl border border-[#FFFFFF1A] shadow-sm hover:shadow-md transition-shadow">
+const Card = ({ children, title, body, info }: any) => (<div className="flex flex-col lg:flex-row items-center p-6 sm:p-8 bg-[##FFFFFF0D] rounded-3xl border border-[#FFFFFF1A] shadow-sm hover:shadow-md transition-shadow">
   <div className="bg-[#00AA0E1A] p-4 rounded-2xl mr-6 shrink-0">
     {children}
   </div>

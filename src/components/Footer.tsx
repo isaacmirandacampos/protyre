@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link'
 import { MapPin, Phone, Mail, Instagram } from "lucide-react";
 import Logo from "@/app/logo";
 
@@ -35,7 +36,9 @@ export const Footer = () => {
             <div className="w-12 h-0.5 bg-green-500 mb-6" />
             <ul className="space-y-3 text-sm text-zinc-400">
               <li className="hover:text-white cursor-pointer transition-colors">
-                Todos os Produtos
+                <Link href="/produtos">
+                  Todos os Produtos
+                </Link>
               </li>
             </ul>
           </div>
@@ -51,7 +54,9 @@ export const Footer = () => {
                 Download Catálogo
               </li>
               <li className="hover:text-white cursor-pointer transition-colors">
-                Seja um Distribuidor
+                <Link href="#distribuidor">
+                  Seja um Distribuidor
+                </Link>
               </li>
             </ul>
           </div>
@@ -91,6 +96,6 @@ export const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };

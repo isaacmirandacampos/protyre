@@ -5,10 +5,12 @@ import {
   ArrowRight,
   DownloadIcon,
 } from "lucide-react";
-import { MOCK_PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import DistributorSection from "@/components/DistributorSection";
 import { ContactSection } from "@/components/ContactSection";
+import { createClient } from "@/prismicio";
+import { Content } from "@prismicio/client";
+import { Product } from "@/types/product";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,7 +20,32 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
+function convertPrismicProductToProduct(doc: Content.ProductDocument): Product | null {
+  const productSlice = doc.data.slices[0] as Content.ProductSlice;
+  if (!productSlice || productSlice.slice_type !== 'product') return null;
+
+  const data = productSlice.primary;
+
+  return {
+    id: doc.uid,
+    name: data.title || "",
+    code: data.codigo_do_produto?.toString() || '',
+    description: data.descricao?.[0]?.text || '',
+    fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
+    image: data.produto?.url || "",
+    specs: {
+      measure: '',
+      position: '',
+      tube: '',
+      loadIndex: ''
+    }
+  };
+}
+
+export default async function Home() {
+  const client = createClient();
+  const productsData = await client.getAllByType('product');
+  const products = productsData.map(convertPrismicProductToProduct).filter((p): p is Product => p !== null).slice(0, 4);
   return (
     <div className="flex flex-col w-screen">
       <Hero />
@@ -34,7 +61,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {MOCK_PRODUCTS.map((product) => (
+            {products.map((product) => (
               <Link key={product.id} href={`/produtos/${product.id}`}>
                 <ProductCard product={product} />
               </Link>

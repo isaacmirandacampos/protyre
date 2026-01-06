@@ -1,9 +1,36 @@
 import { type Metadata } from "next";
 import Link from "next/link";
-import { MOCK_PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { createClient } from "@/prismicio";
+import { Content } from "@prismicio/client";
+import { Product } from "@/types/product";
 
-export default function ProdutosPage() {
+function convertPrismicProductToProduct(doc: Content.ProductDocument): Product | null {
+  const productSlice = doc.data.slices[0] as Content.ProductSlice;
+  if (!productSlice || productSlice.slice_type !== 'product') return null;
+
+  const data = productSlice.primary;
+
+  return {
+    id: doc.uid,
+    name: data.title || 'Produto',
+    code: data.codigo_do_produto?.toString() || '',
+    description: data.descricao?.[0]?.text || '',
+    fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
+    image: data.produto?.url || '/pneu.png',
+    specs: {
+      measure: '',
+      position: '',
+      tube: '',
+      loadIndex: ''
+    }
+  };
+}
+
+export default async function ProdutosPage() {
+  const client = createClient();
+  const productsData = await client.getAllByType('product');
+  const products = productsData.map(convertPrismicProductToProduct).filter((p): p is Product => p !== null);
   return (
     <div className="bg-[#E7EEE5] min-h-screen pb-20">
       {/* Page Header */}
@@ -32,9 +59,9 @@ export default function ProdutosPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="bg-[#E7EEE5] py-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[...MOCK_PRODUCTS, ...MOCK_PRODUCTS].map((product, index) => (
+            {products.map((product) => (
               <Link
-                key={`${product.id}-${index}`}
+                key={product.id}
                 href={`/produtos/${product.id}`}
               >
                 <ProductCard product={product} />

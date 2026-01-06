@@ -2,7 +2,27 @@ import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, Download } from "lucide-react";
-import { MOCK_PRODUCTS } from "@/data/products";
+import { createClient } from "@/prismicio";
+import { Content } from "@prismicio/client";
+
+function convertPrismicProductToProduct(doc: Content.ProductDocument) {
+  const productSlice = doc.data.slices[0] as Content.ProductSlice;
+  if (!productSlice || productSlice.slice_type !== 'product') return null;
+
+  const data = productSlice.primary;
+
+  return {
+    id: doc.uid,
+    name: data.title,
+    code: data.codigo_do_produto?.toString() || '',
+    description: data.descricao?.[0]?.text || '',
+    fullDescription: data.descricao?.map(p => p.text).join('\n') || '',
+    descricaoRichText: data.descricao,
+    image: data.produto?.url,
+    imagemDescricao: data.imagem_na_descricao?.url,
+    catalogoUrl: data.catalogo_para_download?.url,
+  };
+}
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -14,7 +34,17 @@ export default async function ProductDetailPage({
   params,
 }: ProductDetailPageProps) {
   const { id } = await params;
-  const product = MOCK_PRODUCTS.find((p) => p.id === id);
+
+  const client = createClient();
+  let productDoc;
+
+  try {
+    productDoc = await client.getByUID('product', id);
+  } catch (error) {
+    notFound();
+  }
+
+  const product = convertPrismicProductToProduct(productDoc);
 
   if (!product) {
     notFound();
@@ -43,7 +73,7 @@ export default async function ProductDetailPage({
               </Link>
 
               <img
-                src="/pneu.png"
+                src={product.image}
                 alt={product.name}
                 className="max-h-[500px] w-auto object-contain mix-blend-multiply"
               />
@@ -60,27 +90,33 @@ export default async function ProductDetailPage({
               <div className="mb-2">
                 <h1 className="text-4xl font-bold text-zinc-900 mb-2">
                   {product.name}{" "}
-                  <span className="text-green-600">
-                    {product.specs.measure.split(" ")[0]}
-                  </span>
                 </h1>
                 <p className="text-[#777777]">Código: {product.code}</p>
               </div>
 
-              <p className="text-[#353535] text-md my-2 leading-relaxed">
+              <div className="text-[#353535] text-md my-2 leading-relaxed">
                 {product.fullDescription}
-              </p>
+              </div>
 
-              <img
-                src="/pneu-spec.png"
-                alt={product.name}
-                className="max-h-[500px] w-auto object-contain mix-blend-multiply"
-              />
+              {product.imagemDescricao && (
+                <img
+                  src={product.imagemDescricao}
+                  alt={product.name}
+                  className="max-h-[500px] w-auto object-contain mix-blend-multiply"
+                />
+              )}
 
-              <button className="bg-[#00AA0E] hover:bg-green-700 text-white mt-4 px-8 py-2 text-sm rounded font-bold transition-colors flex items-center gap-3">
-                <Download size={20} />
-                Baixar Catálogo
-              </button>
+              {product.catalogoUrl && (
+                <a
+                  href={product.catalogoUrl}
+                  download
+                  target="_blank"
+                  className="bg-[#00AA0E] hover:bg-green-700 text-white mt-4 px-8 py-2 text-sm rounded font-bold transition-colors flex items-center gap-3 w-fit"
+                >
+                  <Download size={20} />
+                  Baixar Catálogo
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -93,7 +129,19 @@ export async function generateMetadata({
   params,
 }: ProductDetailPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = MOCK_PRODUCTS.find((p) => p.id === id);
+
+  const client = createClient();
+  let productDoc;
+
+  try {
+    productDoc = await client.getByUID('product', id);
+  } catch (error) {
+    return {
+      title: "Produto não encontrado - Protyre",
+    };
+  }
+
+  const product = convertPrismicProductToProduct(productDoc);
 
   if (!product) {
     return {

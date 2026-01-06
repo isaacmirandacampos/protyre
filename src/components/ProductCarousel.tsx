@@ -74,7 +74,7 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="flex-[0_0_100%] min-w-0 relative flex items-center justify-center px-24 py-12"
+              className="flex-[0_0_100%] min-w-0 relative flex items-center justify-center px-8 md:px-24 py-24 md:py-12"
             >
               <div className="w-full h-full bg-white flex items-center justify-center">
                 <Image
@@ -92,14 +92,14 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
         {/* Navigation Buttons */}
         <button
           onClick={scrollPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+          className="absolute -left-4 md:left-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
           aria-label="Imagem anterior"
         >
           <ChevronLeft size={32} strokeWidth={2.5} />
         </button>
         <button
           onClick={scrollNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+          className="absolute -right-4 md:right-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
           aria-label="Próxima imagem"
         >
           <ChevronRight size={32} strokeWidth={2.5} />

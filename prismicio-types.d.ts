@@ -69,6 +69,78 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
+type HomeDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * catalogo de download field in *Home*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.catalogo_de_download
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  catalogo_de_download: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
 type ProductDocumentDataSlicesSlice = ProductSlice;
 
 /**
@@ -134,7 +206,7 @@ export type ProductDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = ProductDocument;
+export type AllDocumentTypes = HomeDocument | ProductDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -459,6 +531,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
       ProductDocumentDataSlicesSlice,

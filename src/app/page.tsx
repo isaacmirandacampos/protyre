@@ -9,8 +9,9 @@ import { ProductListCarousel } from "@/components/ProductListCarousel";
 import DistributorSection from "@/components/DistributorSection";
 import { ContactSection } from "@/components/ContactSection";
 import { createClient } from "@/prismicio";
-import { Content, asText } from "@prismicio/client";
+import { Content, asText, LinkField } from "@prismicio/client";
 import { Product } from "@/types/product";
+import { PrismicNextLink } from "@prismicio/next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -62,9 +63,14 @@ export default async function Home() {
   const client = createClient();
   const productsData = await client.getAllByType('product');
   const products = productsData.map(convertPrismicProductToProduct).filter((p): p is Product => p !== null);
+
+  // Buscar dados da página home do Prismic
+  const homeData = await client.getSingle('home');
+  const catalogoLink = homeData.data.catalogo_de_download;
+
   return (
     <div className="flex flex-col w-screen">
-      <Hero />
+      <Hero catalogoLink={catalogoLink} />
       <section className="bg-[#E7EEE5] py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <div className="text-center mb-12">
@@ -95,9 +101,9 @@ export default async function Home() {
   );
 }
 
-const Hero = () => {
+const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
   return (<section className="relative
-        aspect-[1534/944]       
+        aspect-[1534/944]
   ">
     <div className="absolute inset-0 z-0">
       <Image
@@ -130,13 +136,14 @@ const Hero = () => {
           >
             Explorar produtos <ArrowRight className="text-xs h-4" />
           </Link>
-          <Link
-            href="/#sobre"
+          <PrismicNextLink
+            field={catalogoLink}
+            target="_blank"
             className="bg-white hover:bg-gray-200 items-center justify-center flex gap-2 text-sm text-black w-fit xl:w-42 px-2 py-3 rounded-md transition-colors"
           >
             <DownloadIcon className="text-xs h-4" />
             Baixar catálogo
-          </Link>
+          </PrismicNextLink>
         </div>
       </div>
     </div>

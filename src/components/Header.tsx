@@ -4,8 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Download } from "lucide-react";
 import Logo from "@/app/logo";
+import { LinkField } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 
-export const Header = () => {
+export const Header = ({ catalogoLink }: { catalogoLink: LinkField }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -51,10 +53,14 @@ export const Header = () => {
 
           {/* CTA Button - Outlined */}
           <div className="hidden md:block">
-            <button className=" bg-[#00AA0E] text-white hover:bg-green-500/10 px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-semibold transition-colors">
+            <PrismicNextLink
+              field={catalogoLink}
+              target="_blank"
+              className=" bg-[#00AA0E] text-white hover:bg-green-500/10 px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-semibold transition-colors"
+            >
               <Download size={16} />
               Baixar Catálogo
-            </button>
+            </PrismicNextLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,10 +92,14 @@ export const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <button className="mt-4 w-full border-2 border-green-500 text-white px-4 py-3 rounded-lg flex items-center justify-center gap-2 font-semibold hover:bg-green-500/10 transition-colors">
+            <PrismicNextLink
+              field={catalogoLink}
+              target="_blank"
+              className="mt-4 w-full border-2 border-green-500 text-white px-4 py-3 rounded-lg flex items-center justify-center gap-2 font-semibold hover:bg-green-500/10 transition-colors"
+            >
               <Download size={16} />
               Baixar Catálogo
-            </button>
+            </PrismicNextLink>
           </div>
         </div>
       )}

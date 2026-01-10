@@ -82,14 +82,14 @@ export const ProductListCarousel: React.FC<ProductListCarouselProps> = ({ produc
         <>
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-12 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+            className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-12 p-3 text-green-500 hover:text-green-500/90 transition-colors z-10"
             aria-label="Produtos anteriores"
           >
             <ChevronLeft size={32} strokeWidth={2.5} />
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-12 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+            className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-12 p-3 text-green-500 hover:text-green-500/90 transition-colors z-10"
             aria-label="Próximos produtos"
           >
             <ChevronRight size={32} strokeWidth={2.5} />
@@ -104,7 +104,7 @@ export const ProductListCarousel: React.FC<ProductListCarouselProps> = ({ produc
             <button
               key={index}
               onClick={() => emblaApi?.scrollTo(index * 4)}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${Math.floor(selectedIndex / 4) === index ? 'bg-[#00AA0E]' : 'bg-zinc-300'
+              className={`w-2.5 h-2.5 rounded-full transition-colors ${Math.floor(selectedIndex / 4) === index ? 'bg-green-500' : 'bg-zinc-300'
                 }`}
               aria-label={`Ir para página ${index + 1}`}
             />

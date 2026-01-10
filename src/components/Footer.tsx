@@ -45,8 +45,6 @@ export const Footer = ({ catalogoLink }: { catalogoLink: LinkField }) => {
               </li>
             </ul>
           </div>
-
-          {/* Outros */}
           <div>
             <h3 className="text-green-500 font-semibold mb-1 text-sm">
               Outros

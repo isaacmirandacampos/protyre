@@ -13,6 +13,7 @@ interface ProductListCarouselProps {
 
 export const ProductListCarousel: React.FC<ProductListCarouselProps> = ({ products }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     slidesToScroll: 1,
@@ -41,12 +42,19 @@ export const ProductListCarousel: React.FC<ProductListCarouselProps> = ({ produc
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi, setSelectedIndex]);
 
+  const onInit = useCallback(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+  }, [emblaApi]);
+
   React.useEffect(() => {
     if (!emblaApi) return;
+    onInit();
     onSelect();
     emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onInit);
     emblaApi.on('reInit', onSelect);
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, onInit, onSelect]);
 
   if (products.length === 0) {
     return (
@@ -98,14 +106,15 @@ export const ProductListCarousel: React.FC<ProductListCarouselProps> = ({ produc
       )}
 
       {/* Dots Indicators */}
-      {displayProducts.length > 4 && (
+      {displayProducts.length > 4 && scrollSnaps.length > 0 && (
         <div className="pt-6 flex justify-center gap-2">
-          {Array.from({ length: Math.ceil(displayProducts.length / 4) }).map((_, index) => (
+          {scrollSnaps.map((_, index) => (
             <button
               key={index}
-              onClick={() => emblaApi?.scrollTo(index * 4)}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${Math.floor(selectedIndex / 4) === index ? 'bg-green-500' : 'bg-zinc-300'
-                }`}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                selectedIndex === index ? 'bg-green-500 scale-125' : 'bg-zinc-300'
+              }`}
               aria-label={`Ir para página ${index + 1}`}
             />
           ))}

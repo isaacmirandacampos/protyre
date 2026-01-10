@@ -160,7 +160,7 @@ export default async function ProductDetailPage({
                   href={product.catalogoUrl}
                   download
                   target="_blank"
-                  className="bg-[#00AA0E] hover:bg-green-700 text-white mt-4 px-8 py-2 text-sm rounded font-bold transition-colors flex items-center gap-3 w-fit"
+                  className="bg-green-500 hover:bg-green-500/90 text-white mt-4 px-8 py-2 text-sm rounded font-bold transition-colors flex items-center gap-3 w-fit"
                 >
                   <Download size={20} />
                   Baixar Catálogo

@@ -8,7 +8,7 @@ const ContactSection = () => {
 
         {/* Cabeçalho da Seção */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-green-600 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-green-500 mb-6">
             Entre em Contato
           </h2>
           <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
@@ -21,13 +21,13 @@ const ContactSection = () => {
 
 
           <Card title="Telefone" body='(11) 0000-0000' info="Seg a Sex, 8h às 18h">
-            <Phone className="text-green-600 w-7 h-7" />
+            <Phone className="text-green-500 w-7 h-7" />
           </Card>
           <Card title="E-mail" body='contato@protyre.com.br' info="Respondemos em até 24h">
-            <Mail className="text-green-600 w-7 h-7" />
+            <Mail className="text-green-500 w-7 h-7" />
           </Card>
           <Card title="Endereço" body='Santo André' info="São Paulo">
-            <MapPin className="text-green-600 w-7 h-7" />
+            <MapPin className="text-green-500 w-7 h-7" />
           </Card>
         </div>
       </div>

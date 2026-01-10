@@ -127,7 +127,7 @@ export default function DistributorForm() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Razão Social<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -140,7 +140,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Nome Fantasia<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -153,7 +153,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Inscrição Estadual (IE)
                 </label>
                 <input
@@ -165,7 +165,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   CNPJ<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -181,7 +181,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Ramo de Atividade<span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -201,7 +201,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Data de Fundação<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -225,7 +225,7 @@ export default function DistributorForm() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Telefone com DDD<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -241,7 +241,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   E-mail<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -254,7 +254,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Confirmação de e-mail<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -267,7 +267,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Site
                 </label>
                 <input
@@ -279,7 +279,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Rede Social
                 </label>
                 <input
@@ -299,7 +299,7 @@ export default function DistributorForm() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   CEP<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -319,7 +319,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Estado<span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -362,7 +362,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Cidade<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -375,7 +375,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Bairro<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -388,7 +388,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Logradouro<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -401,7 +401,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Nº<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -414,7 +414,7 @@ export default function DistributorForm() {
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <label className="text-sm text-gray-700 font-medium">
+                <label className="text-sm text-gray-700 font-semibold">
                   Complemento
                 </label>
                 <input

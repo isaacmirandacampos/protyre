@@ -18,7 +18,8 @@ export const Footer = () => {
               segurança em cada quilômetro.
             </p>
             <a
-              href="#"
+              href="https://www.instagram.com/oficialprotyre"
+              target="_blank"
               className="flex items-center gap-3 text-zinc-400 hover:text-green-500 transition-colors pt-2"
             >
               <div className="border border-zinc-600 rounded p-1.5">

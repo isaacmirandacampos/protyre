@@ -434,7 +434,8 @@ export default function DistributorForm() {
                 name="aceitarPoliticas"
                 type="checkbox"
                 required
-                className="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer"
+                className="w-5 h-5 rounded border-gray-300 focus:ring-green-500 cursor-pointer"
+                style={{ accentColor: '#00AA0E' }}
               />
               <span className="text-sm text-gray-600">
                 Li e aceito as{' '}

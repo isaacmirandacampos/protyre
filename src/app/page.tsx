@@ -103,7 +103,7 @@ export default async function Home() {
 
 const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
   return (<section className="relative
-        aspect-[1534/944] max-h-[100vh] lg:max-h-[80vh] overflow-hidden
+        xl:aspect-[1534/944] lg:max-h-[100vh] xl:max-h-[80vh] overflow-hidden
   ">
     <div className="absolute inset-0 z-0">
       <Image
@@ -118,13 +118,13 @@ const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
     </div>
 
 
-    <div className="relative z-1 max-w-7xl mx-auto px-4 mb-8 sm:mb-10 sm:px-6 xl:px-8 mt-8 sm:mt-14 lg:mt-28 w-full">
+    <div className="relative z-1 max-w-7xl mx-auto px-4 mb-8 sm:mb-10 sm:px-6 xl:px-8 mt-4 sm:mt-8 xl:mt-28 w-full">
       <div className="max-w-2xl">
-        <h2 className="text-5xl md:text-6xl text-white leading-tight my-8">
+        <h2 className="text-5xl xl:text-6xl text-white leading-tight my-4 xl:my-8">
           Performance que <br />
           <span className="text-green-500">Domina a Pista</span>
         </h2>
-        <p className="text-zinc-300 text-lg my-8 max-w-lg">
+        <p className="text-zinc-300 text-lg my-6 xl:my-8 max-w-lg">
           Pneus de alta performance desenvolvidos com tecnologia de ponta
           para garantir aderência e segurança em cada quilômetro.
         </p>
@@ -147,8 +147,8 @@ const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
       </div>
     </div>
 
-    <div className="relative w-[calc(100vw-40px)] mx-auto sm:w-screen z-1 my-2 sm:my-10 lg:my-20 border-t border-zinc-700" />
-    <div className="relative mt-1 z-1 flex justify-center gap-6 items-center sm:gap-28 pt-8">
+    <div className="relative w-[calc(100vw-40px)] mx-auto sm:w-screen z-1 my-2 xl:my-20 border-t border-zinc-700" />
+    <div className="relative mt-1 z-1 flex justify-center gap-6 items-center sm:gap-28 pt-4 xl:pt-8">
       <div className="flex justify-center xl:items-center flex-col">
         <span className="block text-3xl text-green-500">
           30+
@@ -174,7 +174,7 @@ const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
         </span>
       </div>
     </div>
-    <Link href="#produtos" className="z-1 relative my-6 sm:my-12 flex justify-center flex-col items-center">
+    <Link href="#produtos" className="z-1 relative my-4 xl:my-12 flex justify-center flex-col items-center">
       <span className="text-white/40 gap-8 uppercase">Role para baixo</span>
       <Image priority height={40} width={24} src="/scroll-to-below.svg" alt="Icone avisando indicando que tem mais conteúdo visível ao rolar a página" />
     </Link>

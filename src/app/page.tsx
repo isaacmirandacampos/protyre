@@ -74,7 +74,7 @@ export default async function Home() {
       <section id="produtos" className="bg-[#E7EEE5] py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-green-600 mb-2">
+            <h2 className="text-4xl font-bold text-green-600 mb-2">
               Nossos Produtos
             </h2>
             <p className="text-black">

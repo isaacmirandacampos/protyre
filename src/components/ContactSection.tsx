@@ -20,10 +20,10 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
 
-          <Card title="Telefone" body='(11) 0000-0000' info="Seg a Sex, 8h às 18h">
+          <Card title="Telefone" body='(11) 0000-0000' info="Seg a Sex, 8h às 18h" href="https://wa.me/5511000000000">
             <Phone className="text-green-500 w-7 h-7" />
           </Card>
-          <Card title="E-mail" body='contato@protyre.com.br' info="Respondemos em até 24h">
+          <Card title="E-mail" body='contato@protyre.com.br' info="Respondemos em até 24h" href="mailto:contato@protyre.com.br">
             <Mail className="text-green-500 w-7 h-7" />
           </Card>
           <Card title="Endereço" body='Santo André' info="São Paulo">
@@ -35,7 +35,7 @@ const ContactSection = () => {
   );
 };
 
-const Card = ({ children, title, body, info }: any 	// eslint-disable-line
+const Card = ({ children, title, body, info, href }: any 	// eslint-disable-line
 ) => (
   <div className="flex flex-col lg:flex-row items-center p-6 sm:p-8 bg-[##FFFFFF0D] rounded-3xl border border-[#FFFFFF1A] shadow-sm hover:shadow-md transition-shadow">
     <div className="bg-[#00AA0E1A] p-4 rounded-2xl mr-6 shrink-0">
@@ -45,9 +45,15 @@ const Card = ({ children, title, body, info }: any 	// eslint-disable-line
       <span className='text-white'>
         {title}
       </span>
-      <span className="text-[#00AA0E] font-medium sm:text-md">
-        {body}
-      </span>
+      {href ? (
+        <a href={href} target="_blank" className="text-[#00AA0E] font-medium sm:text-md hover:underline">
+          {body}
+        </a>
+      ) : (
+        <span className="text-[#00AA0E] font-medium sm:text-md">
+          {body}
+        </span>
+      )}
       <span className="text-[#FFFFFF80] font-medium sm:text-md">
         {info}
       </span>

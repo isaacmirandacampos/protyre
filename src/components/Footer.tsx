@@ -78,11 +78,13 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-green-500 flex-shrink-0" />
-                <span>(11) 0000-0000</span>
+                <a href="https://wa.me/5511000000000" target="_blank" className="hover:text-[#00AA0E] font-medium sm:text-md hover:underline">
+                  (11) 0000-0000
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-green-500 flex-shrink-0" />
-                <span>contato@protyre.com.br</span>
+                <a href="mailto:contato@protyre.com.br" target="_blank" className="hover:text-[#00AA0E] font-medium sm:text-md hover:underline">contato@protyre.com.br</a>
               </li>
             </ul>
           </div>

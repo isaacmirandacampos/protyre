@@ -460,6 +460,16 @@ export interface ProductSliceDefaultPrimary {
   imagem_na_descricao: prismic.ImageField<never>;
 
   /**
+   * tabela de specs field in *Product → Default → Primary*
+   *
+   * - **Field Type**: Table
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.default.primary.tabela_de_specs
+   * - **Documentation**: https://prismic.io/docs/fields/table
+   */
+  tabela_de_specs: prismic.TableField;
+
+  /**
    * imagem de produtos field in *Product → Default → Primary*
    *
    * - **Field Type**: Group

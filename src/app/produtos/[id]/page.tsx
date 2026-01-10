@@ -6,6 +6,7 @@ import { ChevronLeft, Download } from "lucide-react";
 import { createClient } from "@/prismicio";
 import { Content, asText } from "@prismicio/client";
 import { ProductCarousel, ProductImage } from "@/components/ProductCarousel";
+import { PrismicRichText } from "@prismicio/react";
 
 function convertPrismicProductToProduct(doc: Content.ProductDocument) {
   const productSlice = doc.data.slices[0] as Content.ProductSlice;
@@ -55,6 +56,9 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument) {
     ? data.catalogo_para_download.url
     : undefined;
 
+  // Extrair dados da tabela corretamente tipados
+  const tableDescricao = data.tabela_de_specs?.body.rows;
+
   return {
     id: doc.uid,
     name: data.title,
@@ -65,6 +69,7 @@ function convertPrismicProductToProduct(doc: Content.ProductDocument) {
     image: carouselImages[0]?.url || '/pneu.png',
     carouselImages,
     imagemDescricao: data.imagem_na_descricao?.url,
+    tableDescricao,
     catalogoUrl,
   };
 }
@@ -106,6 +111,7 @@ export default async function ProductDetailPage({
     allImages.push({ url: product.image, alt: product.name ?? '' });
   }
 
+  console.log(product.tableDescricao);
   return (
     <div className="bg-[#E7EEE5]">
       <div className="py-4">
@@ -133,7 +139,7 @@ export default async function ProductDetailPage({
             </div>
 
             {/* Right Column: Info */}
-            <div className="p-12">
+            <div className="pb-12 px-12">
               <div className="mb-2">
                 <h1 className="text-4xl font-bold text-zinc-900 mb-2">
                   {product.name}{" "}
@@ -153,6 +159,32 @@ export default async function ProductDetailPage({
                   alt={product.name as string}
                   className="max-h-[500px] w-auto object-contain mix-blend-multiply"
                 />
+              )}
+
+              {product.tableDescricao && product.tableDescricao.length > 0 && (
+                <div className="my-6 overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <tbody>
+                      {product.tableDescricao.map((row, rowIndex: number) => (
+                        <tr
+                          key={rowIndex}
+                          style={{
+                            backgroundColor: rowIndex % 2 === 0 ? 'white' : 'rgb(180, 180, 180)'
+                          }}
+                        >
+                          {row.cells.map((cell, cellIndex: number) => (
+                            <td
+                              key={cellIndex}
+                              className={`px-4 py-2 text-sm text-zinc-900 border border-gray-300 ${cellIndex === 0 ? 'font-bold' : ''}`}
+                            >
+                              <PrismicRichText field={cell.content} />
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               )}
 
               {product.catalogoUrl && (

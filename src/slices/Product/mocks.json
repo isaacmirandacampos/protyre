@@ -147,7 +147,6 @@
 							[
 								"imagem_4",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
@@ -166,9 +165,88 @@
 										"background": "transparent"
 									},
 									"alt": "far",
+									"credits": null,
+									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							]
+						]
+					}
+				]
+			},
+			"tabela_de_specs": {
+				"__TYPE__": "TableContent",
+				"content": [
+					{
+						"key": "85bd5078-14cd-49ca-a6d6-67812878e84b",
+						"type": "tableRow",
+						"content": [
+							{
+								"key": "6735496d-b5d0-4f16-b245-bade37b71e3c",
+								"type": "tableHeader",
+								"content": {
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Sit."
+											}
+										}
+									]
+								}
+							},
+							{
+								"key": "8fdbb4fc-4f27-42e7-9a1c-f168e229b0ad",
+								"type": "tableHeader",
+								"content": {
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aute occaecat."
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"key": "76b50ff3-168a-4f42-a063-c67fc27a9593",
+						"type": "tableRow",
+						"content": [
+							{
+								"key": "f48bb2e3-3fce-4c2c-a0cf-59e2e4a29603",
+								"type": "tableCell",
+								"content": {
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud proident qui et aliqua magna."
+											}
+										}
+									]
+								}
+							},
+							{
+								"key": "9d8e5b09-0ba2-45ce-9345-55bb037c1cd5",
+								"type": "tableCell",
+								"content": {
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Fugiat consequat enim incididunt nostrud consequat tempor."
+											}
+										}
+									]
+								}
+							}
 						]
 					}
 				]

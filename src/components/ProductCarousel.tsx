@@ -54,12 +54,12 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
 
   if (images.length === 1) {
     return (
-      <div className="relative h-full w-full bg-white">
+      <div className="relative h-full w-full">
         <Image
           src={images[0].url}
           alt={images[0].alt || 'Produto'}
           fill
-          className="object-contain p-4"
+          className="object-contain"
         />
       </div>
     );

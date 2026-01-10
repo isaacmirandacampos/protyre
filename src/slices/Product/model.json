@@ -43,6 +43,12 @@
             "thumbnails": []
           }
         },
+        "tabela_de_specs": {
+          "type": "Table",
+          "config": {
+            "label": "tabela de specs"
+          }
+        },
         "imagens": {
           "type": "Group",
           "config": {

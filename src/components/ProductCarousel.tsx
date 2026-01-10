@@ -73,13 +73,13 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="flex-[0_0_100%] min-w-0 relative bg-white"
+              className="flex-[0_0_100%] min-w-0 relative px-12 md:px-20"
             >
               <Image
                 src={image.url}
                 alt={image.alt || `Produto ${index + 1}`}
                 fill
-                className="object-contain"
+                className="object-contain px-12 md:px-14"
               />
             </div>
           ))}
@@ -88,14 +88,14 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
         {/* Navigation Buttons */}
         <button
           onClick={scrollPrev}
-          className="absolute cursor-pointer -left-4 md:left-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+          className="absolute cursor-pointer left-0 md:left-2 top-1/2 -translate-y-1/2 p-2 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
           aria-label="Imagem anterior"
         >
           <ChevronLeft size={32} strokeWidth={2.5} />
         </button>
         <button
           onClick={scrollNext}
-          className="absolute cursor-pointer -right-4 md:right-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+          className="absolute cursor-pointer right-0 md:right-2 top-1/2 -translate-y-1/2 p-2 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
           aria-label="Próxima imagem"
         >
           <ChevronRight size={32} strokeWidth={2.5} />

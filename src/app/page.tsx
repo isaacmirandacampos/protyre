@@ -103,7 +103,7 @@ export default async function Home() {
 
 const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
   return (<section className="relative
-        aspect-[1534/944]
+        aspect-[1534/944] max-h-[100vh] lg:max-h-[80vh] overflow-hidden
   ">
     <div className="absolute inset-0 z-0">
       <Image
@@ -112,8 +112,7 @@ const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
         src="/hero.png"
         alt="Motociclista em alta velocidade na rua"
         priority
-        className="w-screen absolute h-full
-                     lg:object-contain object-cover"
+        className="w-full absolute h-full object-cover lg:object-cover object-bottom"
       />
       <div className="absolute bg-gradient-to-b from-black via-black/80 to-black  inset-0 xl:bg-gradient-to-b xl:from-black/95 xl:via-black/60 xl:to-black/60"></div>
     </div>

@@ -54,13 +54,12 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
 
   if (images.length === 1) {
     return (
-      <div className="relative h-full bg-white p-12 flex items-center justify-center">
+      <div className="relative h-full w-full bg-white">
         <Image
           src={images[0].url}
           alt={images[0].alt || 'Produto'}
-          width={600}
-          height={600}
-          className="max-h-[600px] w-auto object-contain"
+          fill
+          className="object-contain p-4"
         />
       </div>
     );
@@ -74,17 +73,14 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="flex-[0_0_100%] min-w-0 relative flex items-center justify-center px-8 md:px-24 py-24 md:py-12"
+              className="flex-[0_0_100%] min-w-0 relative bg-white"
             >
-              <div className="w-full h-full bg-white flex items-center justify-center">
-                <Image
-                  src={image.url}
-                  alt={image.alt || `Produto ${index + 1}`}
-                  width={800}
-                  height={800}
-                  className="max-w-full max-h-full w-auto h-auto object-contain"
-                />
-              </div>
+              <Image
+                src={image.url}
+                alt={image.alt || `Produto ${index + 1}`}
+                fill
+                className="object-contain"
+              />
             </div>
           ))}
         </div>
@@ -92,14 +88,14 @@ export const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
         {/* Navigation Buttons */}
         <button
           onClick={scrollPrev}
-          className="absolute -left-4 md:left-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+          className="absolute cursor-pointer -left-4 md:left-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
           aria-label="Imagem anterior"
         >
           <ChevronLeft size={32} strokeWidth={2.5} />
         </button>
         <button
           onClick={scrollNext}
-          className="absolute -right-4 md:right-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
+          className="absolute cursor-pointer -right-4 md:right-4 top-1/2 -translate-y-1/2 p-3 text-[#00AA0E] hover:text-[#00AA0E]/80 transition-colors z-10"
           aria-label="Próxima imagem"
         >
           <ChevronRight size={32} strokeWidth={2.5} />

@@ -25,7 +25,7 @@ export default async function RootLayout({
         <main className="flex-grow relative bg-white">
           {children}
         </main>
-        <Footer />
+        <Footer catalogoLink={catalogoLink} />
         <PrismicPreview
           repositoryName={repositoryName}
         />

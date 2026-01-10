@@ -2,8 +2,10 @@ import React from "react";
 import Link from 'next/link'
 import { MapPin, Phone, Mail, Instagram } from "lucide-react";
 import Logo from "@/app/logo";
+import { LinkField } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 
-export const Footer = () => {
+export const Footer = ({ catalogoLink }: { catalogoLink: LinkField }) => {
   return (
     <footer className="bg-black text-white pt-16 pb-8 border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,7 +54,9 @@ export const Footer = () => {
             <div className="w-12 h-0.5 bg-green-500 mb-6" />
             <ul className="space-y-3 text-sm text-zinc-400">
               <li className="hover:text-white cursor-pointer transition-colors">
-                Download Catálogo
+                <PrismicNextLink field={catalogoLink} target="_blank">
+                  Download Catálogo
+                </PrismicNextLink >
               </li>
               <li className="hover:text-white cursor-pointer transition-colors">
                 <Link href="#distribuidor">

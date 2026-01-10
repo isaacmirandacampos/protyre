@@ -121,7 +121,7 @@ export default async function ProductDetailPage({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="relative border-r border-zinc-100 min-h-[600px]">
+            <div className="relative min-h-[600px]">
               <Link
                 href="/produtos"
                 className="absolute left-4 top-4 z-10 p-2 rounded-full bg-white shadow-md text-zinc-400 hover:text-green-600 lg:hidden"

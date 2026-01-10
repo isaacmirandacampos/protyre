@@ -2,10 +2,15 @@
 
 @theme {
   --color-mint-500: oklch(0.72 0.11 178);
+  --color-green-500: #00AA0E;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
   .bg-gradient {
-    background: linear-gradient(to right, #00C9504D, #00C9504D, #000000, #000000, #000000);
+    background: linear-gradient(to bottom right, #00C9504D, #000000, #000000);
   }
 }

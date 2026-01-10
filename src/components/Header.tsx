@@ -56,7 +56,7 @@ export const Header = ({ catalogoLink }: { catalogoLink: LinkField }) => {
             <PrismicNextLink
               field={catalogoLink}
               target="_blank"
-              className=" bg-[#00AA0E] text-white hover:bg-green-500/10 px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-semibold transition-colors"
+              className=" bg-green-500 text-white hover:bg-green-500/90 px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-semibold transition-colors"
             >
               <Download size={16} />
               Baixar Catálogo

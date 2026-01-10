@@ -453,7 +453,7 @@ export default function DistributorForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-black font-semibold py-4 px-8 rounded-lg transition-colors inline-flex items-center gap-2"
+                className="bg-green-500 hover:bg-green-500/90 hover:text-white cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed text-black font-semibold py-4 px-8 rounded-lg transition-colors inline-flex items-center gap-2"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar cadastro para ser um distribuidor'}
                 <ArrowRight className="w-5 h-5" />

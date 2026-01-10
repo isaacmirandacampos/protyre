@@ -71,7 +71,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col w-screen">
       <Hero catalogoLink={catalogoLink} />
-      <section className="bg-[#E7EEE5] py-20" >
+      <section id="produtos" className="bg-[#E7EEE5] py-20" >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-green-600 mb-2">
@@ -87,7 +87,7 @@ export default async function Home() {
           <div className="text-center mt-12">
             <Link
               href="/produtos"
-              className="bg-[#00AA0E] text-black px-4 py-3 rounded-md hover:bg-zinc-800 transition-colors inline-flex items-center gap-4"
+              className="bg-green-500 text-black px-4 py-3 rounded-md hover:text-white hover:bg-green-500/90 transition-colors inline-flex items-center gap-4"
             >
               Ver Todos os Produtos <ArrowRight size={18} />
             </Link>
@@ -175,10 +175,10 @@ const Hero = ({ catalogoLink }: { catalogoLink: LinkField }) => {
         </span>
       </div>
     </div>
-    <div className="z-1 relative my-6 sm:my-12 flex justify-center flex-col items-center">
+    <Link href="#produtos" className="z-1 relative my-6 sm:my-12 flex justify-center flex-col items-center">
       <span className="text-white/40 gap-8 uppercase">Role para baixo</span>
       <Image priority height={40} width={24} src="/scroll-to-below.svg" alt="Icone avisando indicando que tem mais conteúdo visível ao rolar a página" />
-    </div>
+    </Link>
   </section >
   )
 }
